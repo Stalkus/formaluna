@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+
+# env (never commit secrets)
+.env
+.env.*.local
+
+# backend not needed for frontend deploy
+backend/
+
