@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: formaluna-postgres
+    environment:
+      POSTGRES_DB: formaluna
+      POSTGRES_USER: formaluna
+      POSTGRES_PASSWORD: formaluna_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - formaluna_pgdata:/var/lib/postgresql/data
+
+volumes:
+  formaluna_pgdata:

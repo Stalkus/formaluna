@@ -1,0 +1,182 @@
+/* QuotationTemplatePage.css */
+
+.quotation-wrapper {
+  background-color: #f7f7f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 20px;
+  font-family: var(--font-sans);
+}
+
+.quotation-document {
+  width: 100%;
+  max-width: 800px;
+  background-color: var(--off-white);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-bottom: 60px;
+}
+
+.quote-page {
+  padding: 80px 60px;
+  min-height: 1000px; /* Force an A4-like physical proportion for demo */
+  border-bottom: 1px dashed rgba(75, 96, 76, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-page:last-child {
+  border-bottom: none;
+}
+
+/* Page 1: Cover */
+.quote-cover {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quote-logo {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--deep-green);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.quote-title {
+  font-size: 3rem;
+  font-family: var(--font-serif);
+  color: var(--deep-green);
+  margin-top: auto;
+  margin-bottom: 24px;
+}
+
+.quote-cover-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  margin-bottom: 40px;
+}
+
+/* Page 2: Description */
+.quote-heading {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--deep-green);
+  margin-bottom: 32px;
+}
+
+.quote-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.8;
+  max-width: 90%;
+}
+
+/* Page 3: Units */
+.quote-units-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.quote-unit-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(75, 96, 76, 0.1);
+  padding: 16px;
+}
+
+.quote-unit-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: #f7f7f0;
+}
+
+.quote-unit-name {
+  font-weight: 500;
+  color: var(--deep-green);
+}
+
+/* Page 4: Financials */
+.quote-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.quote-table th,
+.quote-table td {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(75, 96, 76, 0.1);
+  text-align: left;
+}
+
+.quote-table th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+}
+
+.quote-table td.align-right,
+.quote-table th.align-right {
+  text-align: right;
+}
+
+.quote-totals {
+  align-self: flex-end;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 2px solid var(--deep-green);
+  padding-top: 16px;
+}
+
+.quote-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.quote-row.bold {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--deep-green);
+}
+
+.quote-terms {
+  margin-top: auto;
+  font-size: 0.75rem;
+  opacity: 0.5;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .quotation-wrapper {
+    padding: 40px 10px;
+  }
+  .quote-page {
+    padding: 40px 20px;
+    min-height: auto;
+  }
+  .quote-title {
+    font-size: 2rem;
+  }
+  .quote-units-grid {
+    grid-template-columns: 1fr;
+  }
+  .quote-table th, .quote-table td {
+    padding: 12px 0;
+  }
+  .quote-totals {
+    width: 100%;
+  }
+}
+

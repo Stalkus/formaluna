@@ -1,0 +1,74 @@
+/* NovaAboutPage.css */
+
+.nova-about-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.nova-about-hero {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 0;
+}
+
+.nova-statement {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 5vw, 5.5rem);
+  line-height: 1.1;
+  color: var(--deep-green);
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+.nova-substatement {
+  font-family: var(--font-sans);
+  font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+  opacity: 0.8;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.nova-specs-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+  border-top: 1px solid var(--deep-green);
+  padding-top: 0;
+}
+
+.spec-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-number {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  opacity: 0.5;
+  margin-bottom: 16px;
+}
+
+.spec-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: var(--deep-green);
+}
+
+.spec-desc {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+  .nova-specs-section {
+    grid-template-columns: 1fr;
+  }
+}

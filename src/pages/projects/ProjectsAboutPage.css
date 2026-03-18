@@ -1,0 +1,74 @@
+/* ProjectsAboutPage.css */
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 0;
+}
+
+.about-statement {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  line-height: 1.1;
+  color: var(--deep-green);
+  max-width: 1000px;
+  margin-bottom: 2rem;
+}
+
+.about-substatement {
+  font-family: var(--font-sans);
+  font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+  opacity: 0.8;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.about-content-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8vw;
+  margin-top: var(--spacing-section);
+}
+
+.about-text-block {
+  flex: 1;
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.about-text-block h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-image-wrapper {
+  flex: 1;
+  max-width: 50%;
+  aspect-ratio: 3/4;
+}
+
+@media (max-width: 900px) {
+  .about-image-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-content-section {
+    flex-direction: column;
+    gap: 40px;
+  }
+}

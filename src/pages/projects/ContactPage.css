@@ -1,0 +1,159 @@
+/* ContactPage.css */
+
+.contact-layout {
+  display: flex;
+  margin-top: 5vh;
+  gap: 8vw;
+  padding-bottom: var(--spacing-section);
+}
+
+.contact-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 4.5vw, 5rem);
+  line-height: 1.1;
+  color: var(--deep-green);
+  margin-bottom: 60px;
+  max-width: 90%;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-details a {
+  font-family: var(--font-sans);
+  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+  color: var(--deep-green);
+  text-decoration: none;
+  font-weight: 300;
+  transition: opacity 0.3s ease;
+}
+
+.contact-details a:hover {
+  opacity: 0.6;
+}
+
+.contact-form-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+.brutalist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.brutalist-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--deep-green);
+  padding: 12px 0;
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  color: var(--deep-green);
+  outline: none;
+  border-radius: 0;
+  transition: border-bottom-color 0.3s ease;
+}
+
+.brutalist-input:focus {
+  border-bottom-width: 2px;
+}
+
+.brutalist-input::placeholder {
+  color: var(--deep-green);
+  opacity: 0.4;
+}
+
+textarea.brutalist-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.brutalist-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--deep-green);
+  border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.brutalist-checkbox:checked {
+  background-color: var(--deep-green);
+}
+
+.brutalist-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 3px;
+  width: 10px;
+  height: 5px;
+  border-left: 2px solid var(--off-white);
+  border-bottom: 2px solid var(--off-white);
+  transform: rotate(-45deg);
+}
+
+.checkbox-label {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--deep-green);
+  opacity: 0.8;
+  user-select: none;
+}
+
+.submit-btn {
+  background-color: var(--deep-green);
+  color: var(--off-white);
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 1.25rem 2.5rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  align-self: flex-start;
+  margin-top: 20px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  background-color: #3b4e3c;
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    flex-direction: column;
+    gap: 60px;
+  }
+}

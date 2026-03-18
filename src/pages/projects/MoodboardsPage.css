@@ -1,0 +1,96 @@
+/* MoodboardsPage.css */
+
+.moodboards-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-grid);
+  padding-bottom: var(--spacing-section);
+}
+
+.moodboard-card {
+  position: relative;
+  overflow: hidden;
+  break-inside: avoid;
+  background-color: #e8e8e3;
+  aspect-ratio: 1; /* Default, overridden inline or by classes */
+  cursor: pointer;
+}
+
+.moodboard-card.large {
+  grid-column: span 8;
+  aspect-ratio: 16/9;
+}
+
+.moodboard-card.tall {
+  grid-column: span 4;
+  grid-row: span 2;
+  aspect-ratio: 3/4;
+}
+
+.moodboard-card.square {
+  grid-column: span 4;
+  aspect-ratio: 1;
+}
+
+.moodboard-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), filter 0.8s ease;
+  filter: brightness(0.9);
+}
+
+.moodboard-card:hover .moodboard-image {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+.moodboard-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(10, 20, 10, 0.8) 0%, rgba(0,0,0,0) 50%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.moodboard-card:hover .moodboard-overlay {
+  opacity: 1;
+}
+
+.moodboard-title {
+  color: var(--off-white);
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.moodboard-desc {
+  color: var(--off-white);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 1024px) {
+  .moodboard-card.large,
+  .moodboard-card.tall,
+  .moodboard-card.square {
+    grid-column: span 6;
+    grid-row: auto;
+    aspect-ratio: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .moodboard-card.large,
+  .moodboard-card.tall,
+  .moodboard-card.square {
+    grid-column: span 12;
+  }
+}
