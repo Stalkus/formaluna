@@ -15,7 +15,7 @@ const NovaContactPage: React.FC = () => {
         transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
       >
         <div className="nova-contact-info-col">
-          <h1 className="nova-contact-title">Partner with Nova.</h1>
+          <h1 className="nova-contact-title">Partner with Trade.</h1>
           <p className="nova-contact-desc">
             Direct access to technical support, pricing tiers, and inventory availability for electrical contractors, architects, and B2B integrators.
           </p>
@@ -27,7 +27,7 @@ const NovaContactPage: React.FC = () => {
             </div>
             <div className="nova-contact-entry">
               <span className="nova-contact-label">Technical Enquiries</span>
-              <a href="mailto:nova@formaluna.be">nova@formaluna.be</a>
+              <a href="mailto:trade@formaluna.be">trade@formaluna.be</a>
             </div>
             <div className="nova-contact-entry">
               <span className="nova-contact-label">Headquarters</span>

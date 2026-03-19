@@ -66,9 +66,9 @@
 }
 
 .navbar.dark .nav-logo {
-  /* Make the transparent/dark logo visible on the dark gateway hero */
-  filter: brightness(0) invert(1);
-  opacity: 0.95;
+  /* Avoid inverting non-transparent logo backgrounds (causes white box). */
+  filter: none;
+  opacity: 1;
 }
 
 @media (max-width: 900px) {

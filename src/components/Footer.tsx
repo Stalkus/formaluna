@@ -10,12 +10,12 @@ const Footer: React.FC = () => {
     <footer className="global-footer">
       <div className="footer-top">
         <div className="footer-brand">
-          <span className="footer-logo">Forma Luna {isProfessionals && <span style={{opacity: 0.5, fontSize: '1rem'}}>Nova</span>}</span>
+          <span className="footer-logo">Forma Luna</span>
           <div className="footer-contact-details">
             <a href="tel:+32478992563">+32 478 99 25 63</a>
-            <a href={isProfessionals ? "mailto:nova@formaluna.be" : "mailto:studio@formaluna.be"}>
-              {isProfessionals ? "nova@formaluna.be" : "studio@formaluna.be"}
-            </a>
+              <a href={isProfessionals ? "mailto:trade@formaluna.be" : "mailto:studio@formaluna.be"}>
+                {isProfessionals ? "trade@formaluna.be" : "studio@formaluna.be"}
+              </a>
             <span>Antwerp, Belgium</span>
           </div>
         </div>

@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
   ];
 
   const professionalLinks = [
-    { name: 'About us (Nova)', path: '/professionals/about' },
+    { name: 'About us', path: '/professionals/about' },
     { name: 'Portfolio', path: '/professionals/products' },
     { name: 'Contact', path: '/professionals/contact' },
   ];

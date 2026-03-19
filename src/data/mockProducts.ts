@@ -50,9 +50,9 @@ export const MOCK_PRODUCTS: MockProduct[] = [
   },
   {
     id: 6,
-    name: 'Nova Kitchen Island Series',
+    name: 'Kitchen Island Series',
     category: 'Pendant',
-    desc: 'High-end residential pendant system developed by our bespoke Nova division specifically for luxury kitchens.',
+    desc: 'High-end residential pendant system developed by our bespoke division specifically for luxury kitchens.',
     packshot: 'https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&q=80&w=700&h=700',
     lifestyle: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=700&h=700',
   },

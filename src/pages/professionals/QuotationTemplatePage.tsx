@@ -44,7 +44,7 @@ const QuotationTemplatePage: React.FC = () => {
               <div className="quote-unit-card">
                 <img src="https://beneito-faure.com/wp-content/uploads/2025/03/PR_OCULUM_3PH_Black_V1_00-15_1-700x700.jpg" alt="N-75" className="quote-unit-img" />
                 <div>
-                  <h3 className="quote-unit-name">Nova N-75 Downlight</h3>
+                  <h3 className="quote-unit-name">N-75 Downlight</h3>
                   <p style={{ fontSize: '0.875rem', opacity: 0.6 }}>Recessed / 12W / 2700K</p>
                 </div>
               </div>
@@ -91,7 +91,7 @@ const QuotationTemplatePage: React.FC = () => {
                   <td className="align-right">€ 750.00</td>
                 </tr>
                 <tr>
-                  <td>Nova N-75 Downlight (2700K)</td>
+                  <td>N-75 Downlight (2700K)</td>
                   <td>NV-75-27K</td>
                   <td className="align-right">24</td>
                   <td className="align-right">€ 145.00</td>
