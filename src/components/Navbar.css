@@ -49,7 +49,7 @@
 
 .nav-logo {
   width: auto;
-  height: 120px;
+  height: 96px;
   object-fit: contain;
   margin-right: 0;
   margin-left: 0;
@@ -68,7 +68,7 @@
 
 @media (max-width: 900px) {
   .nav-logo {
-    height: 96px;
+    height: 77px;
   }
 }
 
