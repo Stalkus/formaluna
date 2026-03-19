@@ -60,13 +60,8 @@
 }
 
 .navbar.light .nav-logo,
-.navbar.light.scrolled .nav-logo {
-  /* Ensure visibility on the white/bright header background */
-  filter: brightness(0.35) contrast(1.5) saturate(0.9);
-}
-
+.navbar.light.scrolled .nav-logo,
 .navbar.dark .nav-logo {
-  /* Avoid inverting non-transparent logo backgrounds (causes white box). */
   filter: none;
   opacity: 1;
 }

@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`navbar ${isLight ? 'light' : 'dark'} ${isLight && isScrolled ? 'scrolled' : ''}`}>
       <Link to="/" className="nav-brand">
-        <img src="/logo.png" alt="Forma Luna" className="nav-logo" />
+        <img src={isLight ? "/logo-dark.png" : "/logo-light.png"} alt="Forma Luna" className="nav-logo" />
       </Link>
       <div className="nav-links">
         {links.map((link) => (
