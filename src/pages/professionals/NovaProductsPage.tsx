@@ -91,9 +91,9 @@ const NovaProductsPage: React.FC = () => {
     <div className="page-wrapper container">
       <Navbar />
       
-      <div className="nova-products-layout">
+      <div className="trade-products-layout">
         <motion.header 
-          className="nova-products-header"
+          className="trade-products-header"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
@@ -101,13 +101,13 @@ const NovaProductsPage: React.FC = () => {
           <h1 className="hero-title">Technical Portfolio.</h1>
           <p className="hero-subtitle">Comprehensive specifications and photometric data for trade professionals.</p>
           
-          <div className="nova-filter-row">
-            <span className="nova-filter-label">Filter:</span>
-            <div className="nova-filter-group">
+          <div className="trade-filter-row">
+            <span className="trade-filter-label">Filter:</span>
+            <div className="trade-filter-group">
               {CATEGORIES.map(cat => (
                 <button 
                   key={cat}
-                  className={`nova-filter-btn ${activeFilter === cat ? 'active' : ''}`}
+                  className={`trade-filter-btn ${activeFilter === cat ? 'active' : ''}`}
                   onClick={() => setActiveFilter(cat)}
                 >
                   {cat}
@@ -117,7 +117,7 @@ const NovaProductsPage: React.FC = () => {
           </div>
         </motion.header>
 
-        <motion.div layout className="nova-grid">
+        <motion.div layout className="trade-grid">
           <AnimatePresence>
             {filteredProducts.map((product) => (
               <motion.div 
@@ -128,15 +128,15 @@ const NovaProductsPage: React.FC = () => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
               >
-                <Link to={`/professionals/products/${product.id}`} className="nova-card" style={{ textDecoration: 'none' }}>
-                  <div className="nova-visual" style={{ position: 'relative' }}>
+                <Link to={`/professionals/products/${product.id}`} className="trade-card" style={{ textDecoration: 'none' }}>
+                  <div className="trade-visual" style={{ position: 'relative' }}>
                     <span style={{ position: 'absolute', top: '16px', left: '16px', backgroundColor: 'var(--deep-green)', color: 'var(--off-white)', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', padding: '4px 8px' }}>Specifier Data</span>
-                    <img src={product.packshot} alt={product.name} className="nova-packshot" loading="lazy" />
+                    <img src={product.packshot} alt={product.name} className="trade-packshot" loading="lazy" />
                   </div>
-                  <div className="nova-info">
-                    <h3 className="nova-name">{product.name}</h3>
-                    <p className="nova-specs">{product.specs}</p>
-                    <div className="nova-action">
+                  <div className="trade-info">
+                    <h3 className="trade-name">{product.name}</h3>
+                    <p className="trade-specs">{product.specs}</p>
+                    <div className="trade-action">
                       <Download size={16} /> Data Sheet (.PDF)
                     </div>
                   </div>

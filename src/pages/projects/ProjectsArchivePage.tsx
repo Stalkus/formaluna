@@ -27,7 +27,7 @@ const PROJECTS = [
   {
     id: 4,
     title: 'Maison Noir Courtyard',
-    category: 'OUTDOOR / PRIVATE ESTATE (NOVA)',
+    category: 'OUTDOOR / PRIVATE ESTATE',
     image: 'https://beneito-faure.com/wp-content/uploads/2024/07/img_portada_casa-terral.jpg',
   },
   {
@@ -51,7 +51,7 @@ const PROJECTS = [
   {
     id: 8,
     title: 'Villa Verde Kitchen',
-    category: 'INDOOR / RESIDENTIAL (NOVA)',
+    category: 'INDOOR / RESIDENTIAL',
     image: 'https://beneito-faure.com/wp-content/uploads/2025/02/portada_proj_cuina_particular.jpg',
   },
   {

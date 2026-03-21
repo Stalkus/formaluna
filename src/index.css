@@ -5,9 +5,41 @@
   --deep-green: #4b604c;
   --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
-  
+
   --spacing-section: 160px;
   --spacing-grid: 2rem;
+
+  /* Trade portal surfaces (studio defaults) */
+  --trade-image-bg: #ffffff;
+  --trade-card-hover-bg: #ffffff;
+  --trade-muted-green: rgba(75, 96, 76, 0.7);
+  --trade-border-soft: rgba(75, 96, 76, 0.1);
+  --trade-border-medium: rgba(75, 96, 76, 0.2);
+  --trade-filter-track: rgba(75, 96, 76, 0.05);
+  --trade-card-shadow: rgba(0, 0, 0, 0.06);
+  --trade-card-hover-shadow: rgba(0, 0, 0, 0.06);
+  --trade-related-hover-shadow: rgba(0, 0, 0, 0.05);
+  --trade-btn-solid-hover: #3b4e3c;
+  --trade-related-card-bg: #ffffff;
+  --trade-related-image-well: #fafafa;
+}
+
+/* B2B Trade portal — inverted brand (dark field, light type) */
+body.portal-trade {
+  --off-white: #101513;
+  --deep-green: #e8ebe4;
+  --trade-image-bg: #0c100e;
+  --trade-card-hover-bg: #1c2421;
+  --trade-muted-green: rgba(232, 235, 228, 0.65);
+  --trade-border-soft: rgba(255, 255, 255, 0.1);
+  --trade-border-medium: rgba(255, 255, 255, 0.16);
+  --trade-filter-track: rgba(255, 255, 255, 0.06);
+  --trade-card-shadow: rgba(0, 0, 0, 0.35);
+  --trade-card-hover-shadow: rgba(0, 0, 0, 0.45);
+  --trade-related-hover-shadow: rgba(0, 0, 0, 0.4);
+  --trade-btn-solid-hover: #c5cbc0;
+  --trade-related-card-bg: #161d1a;
+  --trade-related-image-well: #0e1210;
 }
 
 * {
@@ -120,4 +152,78 @@ button.btn-outline:hover {
   opacity: 0.8;
   line-height: 1.5;
   margin-bottom: 4rem;
+}
+
+/* Trade portal: footer reads as a deep anchor (not the swapped token pair) */
+body.portal-trade .global-footer {
+  background-color: #080b0a;
+  color: #dde1db;
+}
+
+body.portal-trade .footer-logo,
+body.portal-trade .footer-form-title {
+  color: #f2f4f0;
+}
+
+body.portal-trade .footer-contact-details,
+body.portal-trade .footer-contact-details a {
+  color: #c8cec8;
+}
+
+body.portal-trade .footer-input {
+  color: #eef1ec;
+  border-bottom-color: rgba(255, 255, 255, 0.22);
+}
+
+body.portal-trade .footer-input::placeholder {
+  color: #eef1ec;
+  opacity: 0.45;
+}
+
+body.portal-trade .footer-input:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.55);
+}
+
+body.portal-trade .footer-submit {
+  background-color: #e8ebe4;
+  color: #101513;
+}
+
+body.portal-trade .footer-submit:hover {
+  opacity: 0.92;
+}
+
+body.portal-trade .footer-bottom {
+  border-top-color: rgba(255, 255, 255, 0.12);
+  color: rgba(230, 233, 228, 0.55);
+}
+
+body.portal-trade .footer-links a {
+  color: #c8cec8;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --spacing-section: 96px;
+    --spacing-grid: 1.25rem;
+  }
+
+  .container {
+    padding: 0 6%;
+  }
+
+  .page-wrapper {
+    padding-top: 104px;
+    padding-bottom: var(--spacing-section);
+  }
+
+  .hero-title {
+    max-width: 100%;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
+    margin-bottom: 2.25rem;
+  }
 }

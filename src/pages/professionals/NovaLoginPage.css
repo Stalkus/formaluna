@@ -1,6 +1,6 @@
-/* NovaLoginPage.css */
+/* Trade portal — page styles */
 
-.nova-login-layout {
+.trade-login-layout {
   display: flex;
   min-height: 80vh;
   justify-content: center;
@@ -8,39 +8,39 @@
   padding: 5vh 5vw;
 }
 
-.nova-login-container {
+.trade-login-container {
   width: 100%;
   max-width: 500px;
   background-color: var(--off-white);
   padding: 60px 40px;
-  border: 1px solid rgba(75, 96, 76, 0.1);
+  border: 1px solid var(--trade-border-soft);
 }
 
-.nova-login-header {
+.trade-login-header {
   margin-bottom: 40px;
   text-align: center;
 }
 
-.nova-login-title {
+.trade-login-title {
   font-family: var(--font-serif);
   font-size: 2.5rem;
   color: var(--deep-green);
   margin-bottom: 8px;
 }
 
-.nova-login-subtitle {
+.trade-login-subtitle {
   font-family: var(--font-sans);
   font-size: 0.875rem;
   opacity: 0.6;
 }
 
-.nova-login-form {
+.trade-login-form {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-.nova-login-actions {
+.trade-login-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,7 +49,7 @@
   font-size: 0.875rem;
 }
 
-.nova-login-link {
+.trade-login-link {
   color: var(--deep-green);
   text-decoration: underline;
   opacity: 0.6;
@@ -57,11 +57,11 @@
   transition: opacity 0.3s ease;
 }
 
-.nova-login-link:hover {
+.trade-login-link:hover {
   opacity: 1;
 }
 
-.nova-btn-login {
+.trade-btn-login {
   width: 100%;
   background-color: var(--deep-green);
   color: var(--off-white);
@@ -77,6 +77,6 @@
   margin-top: 24px;
 }
 
-.nova-btn-login:hover {
+.trade-btn-login:hover {
   opacity: 0.9;
 }

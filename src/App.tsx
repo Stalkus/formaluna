@@ -13,7 +13,7 @@ import ProductsPage from './pages/projects/ProductsPage';
 import ContactPage from './pages/projects/ContactPage';
 import ProjectProductDetailPage from './pages/projects/ProjectProductDetailPage';
 
-/* Professionals (Nova) Portal */
+/* Trade / professionals portal */
 import NovaAboutPage from './pages/professionals/NovaAboutPage';
 import NovaProductsPage from './pages/professionals/NovaProductsPage';
 import NovaContactPage from './pages/professionals/NovaContactPage';
@@ -66,7 +66,7 @@ function App() {
           <Route path="/projects/contact" element={<ContactPage />} />
           <Route path="/projects" element={<Navigate to="/projects/projects" replace />} />
 
-          {/* Professionals (Nova) Portal Routes */}
+          {/* Trade portal routes */}
           <Route path="/professionals/about" element={<NovaAboutPage />} />
           <Route path="/professionals/products" element={<NovaProductsPage />} />
           <Route path="/professionals/products/:id" element={<NovaProductDetailPage />} />

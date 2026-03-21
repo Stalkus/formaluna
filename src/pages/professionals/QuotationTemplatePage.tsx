@@ -6,7 +6,7 @@ import './QuotationTemplatePage.css';
 
 const QuotationTemplatePage: React.FC = () => {
   return (
-    <div className="page-wrapper" style={{ backgroundColor: '#f7f7f0' }}>
+    <div className="page-wrapper">
       <Navbar />
 
       <div className="quotation-wrapper">

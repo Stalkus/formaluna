@@ -156,4 +156,20 @@ textarea.brutalist-input {
     flex-direction: column;
     gap: 60px;
   }
+
+  .contact-title {
+    max-width: 100%;
+    margin-bottom: 32px;
+  }
+
+  .brutalist-form {
+    max-width: 100%;
+  }
+
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    align-self: stretch;
+  }
 }

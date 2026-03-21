@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { User } from 'lucide-react';
+import { Menu, User, X } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
@@ -8,7 +8,9 @@ const Navbar: React.FC = () => {
   const isProfessionals = location.pathname.startsWith('/professionals');
   const isProjects = location.pathname.startsWith('/projects');
   const isLight = isProfessionals || isProjects;
+  const logoSrc = isProfessionals ? '/logo-light.png' : '/logo-dark.png';
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const projectLinks = [
     { name: 'About us', path: '/projects/about' },
@@ -38,29 +40,54 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [isLight]);
 
+  useEffect(() => {
+    // Close mobile menu on navigation
+    setIsMobileOpen(false);
+  }, [location.pathname]);
+
   return (
-    <nav className={`navbar ${isLight ? 'light' : 'dark'} ${isLight && isScrolled ? 'scrolled' : ''}`}>
+    <nav
+      className={`navbar ${isProfessionals ? 'trade' : isProjects ? 'light' : 'dark'} ${isLight && isScrolled ? 'scrolled' : ''}`}
+    >
       <Link to="/" className="nav-brand">
-        <img src={isLight ? "/logo-dark.png" : "/logo-light.png"} alt="Forma Luna" className="nav-logo" />
+        <img src={logoSrc} alt="Forma Luna" className="nav-logo" />
       </Link>
-      <div className="nav-links">
+      <button
+        className="nav-menu-btn"
+        type="button"
+        aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={isMobileOpen}
+        onClick={() => setIsMobileOpen((v) => !v)}
+      >
+        {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
+      </button>
+
+      <div className={`nav-links ${isMobileOpen ? 'open' : ''}`}>
         {links.map((link) => (
           <Link
             key={link.name}
             to={link.path}
             className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+            onClick={() => setIsMobileOpen(false)}
           >
             {link.name}
           </Link>
         ))}
-        <Link to="/professionals" className="nav-cta">
-          Enter Trade Portal
-        </Link>
+        {isProfessionals ? (
+          <Link to="/projects/projects" className="nav-cta nav-cta-studio" onClick={() => setIsMobileOpen(false)}>
+            Studio
+          </Link>
+        ) : (
+          <Link to="/professionals" className="nav-cta nav-cta-trade-entry" onClick={() => setIsMobileOpen(false)}>
+            Enter Trade Portal
+          </Link>
+        )}
         {isProfessionals && (
           <Link
             to="/professionals/login"
             title="Trade Login"
-            style={{ display: 'flex', alignItems: 'center', marginLeft: '16px' }}
+            className="nav-icon-link"
+            onClick={() => setIsMobileOpen(false)}
           >
             <User size={20} />
           </Link>

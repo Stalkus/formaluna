@@ -1,0 +1,671 @@
+{
+  "content": [
+    {
+      "id": "nova_ct_sec",
+      "settings": {
+        "flex_direction": "column",
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "0",
+          "bottom": "80",
+          "left": "0",
+          "isLinked": false
+        },
+        "padding_tablet": {
+          "unit": "px",
+          "top": "60",
+          "right": "0",
+          "bottom": "60",
+          "left": "0",
+          "isLinked": false
+        },
+        "padding_mobile": {
+          "unit": "px",
+          "top": "40",
+          "right": "0",
+          "bottom": "40",
+          "left": "0",
+          "isLinked": false
+        },
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": false
+        },
+        "background_color": "#f5f3f0",
+        "border_border": "none"
+      },
+      "elements": [
+        {
+          "id": "nova_ct_row",
+          "settings": {
+            "flex_direction": "row",
+            "flex_wrap": "wrap",
+            "content_width": "full",
+            "flex_gap": {
+              "unit": "px",
+              "size": 40,
+              "column": "40",
+              "row": "40",
+              "isLinked": true
+            },
+            "flex_gap_tablet": {
+              "unit": "px",
+              "size": 32,
+              "column": "32",
+              "row": "32",
+              "isLinked": true
+            },
+            "flex_gap_mobile": {
+              "unit": "px",
+              "size": 24,
+              "column": "24",
+              "row": "24",
+              "isLinked": true
+            },
+            "flex_justify_content": "flex-start",
+            "flex_align_items": "flex-start",
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "padding_tablet": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "padding_mobile": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "border_border": "none"
+          },
+          "elements": [
+            {
+              "id": "nova_ct_col_left",
+              "settings": {
+                "flex_direction": "column",
+                "content_width": "full",
+                "width": {
+                  "unit": "%",
+                  "size": 40
+                },
+                "width_tablet": {
+                  "unit": "%",
+                  "size": 100
+                },
+                "width_mobile": {
+                  "unit": "%",
+                  "size": 100
+                },
+                "margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding_tablet": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding_mobile": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "border_border": "none"
+              },
+              "elements": [
+                {
+                  "id": "nova_ct_h1",
+                  "settings": {
+                    "title_size": "h1",
+                    "header_size": "h1",
+                    "editor": "Partner with Trade.",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Georgia, serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 3
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 2.5
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 2
+                    },
+                    "typography_font_weight": "700",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.1
+                    },
+                    "text_color": "#4b604c",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "16",
+                      "left": "0",
+                      "isLinked": false
+                    },
+                    "margin_mobile": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "12",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "heading"
+                },
+                {
+                  "id": "nova_ct_sub",
+                  "settings": {
+                    "editor": "Direct access to technical support, pricing tiers, and inventory availability for electrical contractors, architects, and B2B integrators.",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Arial, Helvetica, sans-serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 1.125
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 1.0625
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 1
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.6
+                    },
+                    "text_color": "#4b604c",
+                    "text_opacity": "0.85",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "40",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "text"
+                },
+                {
+                  "id": "nova_ct_l1",
+                  "settings": {
+                    "editor": "Trade Support",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Arial, Helvetica, sans-serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 0.75
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 0.75
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 0.6875
+                    },
+                    "typography_font_weight": "600",
+                    "typography_text_transform": "uppercase",
+                    "typography_letter_spacing": {
+                      "unit": "em",
+                      "size": 0.1
+                    },
+                    "text_color": "#4b604c",
+                    "text_opacity": "0.65",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "8",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "text"
+                },
+                {
+                  "id": "nova_ct_p1",
+                  "settings": {
+                    "editor": "<a href=\"tel:+32478992563\" style=\"color:#4b604c;text-decoration:none;border-bottom:1px solid rgba(75,96,76,0.35);\">+32 478 99 25 63</a>",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Arial, Helvetica, sans-serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 1.125
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 1.0625
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 1
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.6
+                    },
+                    "text_color": "#4b604c",
+                    "text_opacity": "1",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "20",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "text"
+                },
+                {
+                  "id": "nova_ct_l2",
+                  "settings": {
+                    "editor": "Technical Enquiries",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Arial, Helvetica, sans-serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 0.75
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 0.75
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 0.6875
+                    },
+                    "typography_font_weight": "600",
+                    "typography_text_transform": "uppercase",
+                    "typography_letter_spacing": {
+                      "unit": "em",
+                      "size": 0.1
+                    },
+                    "text_color": "#4b604c",
+                    "text_opacity": "0.65",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "8",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "text"
+                },
+                {
+                  "id": "nova_ct_p2",
+                  "settings": {
+                    "editor": "<a href=\"mailto:trade@formaluna.be\" style=\"color:#4b604c;text-decoration:none;border-bottom:1px solid rgba(75,96,76,0.35);\">trade@formaluna.be</a>",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Arial, Helvetica, sans-serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 1.125
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 1.0625
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 1
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.6
+                    },
+                    "text_color": "#4b604c",
+                    "text_opacity": "1",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "20",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "text"
+                },
+                {
+                  "id": "nova_ct_l3",
+                  "settings": {
+                    "editor": "Headquarters",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Arial, Helvetica, sans-serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 0.75
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 0.75
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 0.6875
+                    },
+                    "typography_font_weight": "600",
+                    "typography_text_transform": "uppercase",
+                    "typography_letter_spacing": {
+                      "unit": "em",
+                      "size": 0.1
+                    },
+                    "text_color": "#4b604c",
+                    "text_opacity": "0.65",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "8",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "text"
+                },
+                {
+                  "id": "nova_ct_p3",
+                  "settings": {
+                    "editor": "<span style=\"color:#4b604c;\">Antwerp, Belgium</span>",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Arial, Helvetica, sans-serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 1.125
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 1.0625
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 1
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.6
+                    },
+                    "text_color": "#4b604c",
+                    "text_opacity": "1",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "text"
+                }
+              ],
+              "isInner": true,
+              "elType": "container"
+            },
+            {
+              "id": "nova_ct_col_right",
+              "settings": {
+                "flex_direction": "column",
+                "content_width": "full",
+                "width": {
+                  "unit": "%",
+                  "size": 60
+                },
+                "width_tablet": {
+                  "unit": "%",
+                  "size": 100
+                },
+                "width_mobile": {
+                  "unit": "%",
+                  "size": 100
+                },
+                "margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding_tablet": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding_mobile": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "border_border": "none"
+              },
+              "elements": [
+                {
+                  "id": "nova_ct_form",
+                  "settings": {
+                    "form_name": "B2B Trade Access Request",
+                    "form_fields": [
+                      {
+                        "custom_id": "company",
+                        "field_type": "text",
+                        "field_label": "Company Name",
+                        "placeholder": "Company Name",
+                        "required": "true",
+                        "width": "100"
+                      },
+                      {
+                        "custom_id": "contact",
+                        "field_type": "text",
+                        "field_label": "Contact Person",
+                        "placeholder": "Contact Person",
+                        "required": "true",
+                        "width": "100"
+                      },
+                      {
+                        "custom_id": "email",
+                        "field_type": "email",
+                        "field_label": "Professional Email",
+                        "placeholder": "Professional Email Address",
+                        "required": "true",
+                        "width": "100"
+                      },
+                      {
+                        "custom_id": "vat",
+                        "field_type": "text",
+                        "field_label": "VAT Number",
+                        "placeholder": "VAT Number",
+                        "required": "true",
+                        "width": "100"
+                      }
+                    ],
+                    "button_text": "Request Trade Access",
+                    "button_align": "stretch",
+                    "button_text_color": "#FFFFFF",
+                    "button_background_color": "#4b604c",
+                    "button_background_color_hover": "#3d4c3d",
+                    "button_border_border": "none",
+                    "button_typography_typography": "custom",
+                    "button_typography_font_family": "Arial, Helvetica, sans-serif",
+                    "field_typography_typography": "custom",
+                    "field_typography_font_family": "Arial, Helvetica, sans-serif",
+                    "label_typography_typography": "custom",
+                    "label_typography_font_family": "Arial, Helvetica, sans-serif",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "form"
+                }
+              ],
+              "isInner": true,
+              "elType": "container"
+            }
+          ],
+          "isInner": true,
+          "elType": "container"
+        }
+      ],
+      "isInner": false,
+      "elType": "container"
+    },
+    {
+      "id": "nova_ct_footer",
+      "settings": {
+        "flex_direction": "column",
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "48",
+          "right": "0",
+          "bottom": "96",
+          "left": "0",
+          "isLinked": false
+        },
+        "padding_tablet": {
+          "unit": "px",
+          "top": "40",
+          "right": "0",
+          "bottom": "72",
+          "left": "0",
+          "isLinked": false
+        },
+        "padding_mobile": {
+          "unit": "px",
+          "top": "32",
+          "right": "0",
+          "bottom": "56",
+          "left": "0",
+          "isLinked": false
+        },
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": false
+        },
+        "background_color": "#ededed",
+        "border_border": "none"
+      },
+      "elements": [],
+      "isInner": false,
+      "elType": "container"
+    }
+  ],
+  "page_settings": [
+    {
+      "settings": {
+        "custom_css": ""
+      }
+    }
+  ],
+  "version": "0.4",
+  "title": "B2B Trade — Contact Us (Trade)",
+  "type": "page"
+}

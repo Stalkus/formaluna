@@ -1,19 +1,19 @@
-/* NovaContactPage.css */
+/* Trade portal — page styles */
 
-.nova-contact-layout {
+.trade-contact-layout {
   display: flex;
   margin-top: 5vh;
   gap: 8vw;
   padding-bottom: var(--spacing-section);
 }
 
-.nova-contact-info-col {
+.trade-contact-info-col {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.nova-contact-title {
+.trade-contact-title {
   font-family: var(--font-serif);
   font-size: clamp(2.5rem, 4vw, 4.5rem);
   line-height: 1.1;
@@ -22,7 +22,7 @@
   max-width: 90%;
 }
 
-.nova-contact-desc {
+.trade-contact-desc {
   font-family: var(--font-sans);
   font-size: 1.125rem;
   opacity: 0.8;
@@ -30,19 +30,19 @@
   margin-bottom: 60px;
 }
 
-.nova-contact-details {
+.trade-contact-details {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.nova-contact-entry {
+.trade-contact-entry {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.nova-contact-label {
+.trade-contact-label {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -50,7 +50,7 @@
   opacity: 0.5;
 }
 
-.nova-contact-entry a {
+.trade-contact-entry a {
   font-family: var(--font-sans);
   font-size: 1.25rem;
   color: var(--deep-green);
@@ -59,11 +59,11 @@
   transition: opacity 0.3s ease;
 }
 
-.nova-contact-entry a:hover {
+.trade-contact-entry a:hover {
   opacity: 0.6;
 }
 
-.nova-contact-form-col {
+.trade-contact-form-col {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -71,10 +71,10 @@
 }
 
 /* Reusing brutalist form styles defined in ContactPage.css / index.css context 
-   We will keep it self-contained for Nova though to avoid inter-page dependency 
+   We will keep it self-contained for trade portal though to avoid inter-page dependency 
    if they are split by chunks. */
 
-.nova-brutalist-form {
+.trade-brutalist-form {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -82,12 +82,12 @@
   max-width: 600px;
 }
 
-.nova-form-group {
+.trade-form-group {
   display: flex;
   flex-direction: column;
 }
 
-.nova-input {
+.trade-input {
   background: transparent;
   border: none;
   border-bottom: 1px solid var(--deep-green);
@@ -100,16 +100,16 @@
   transition: border-bottom-color 0.3s ease;
 }
 
-.nova-input:focus {
+.trade-input:focus {
   border-bottom-width: 2px;
 }
 
-.nova-input::placeholder {
+.trade-input::placeholder {
   color: var(--deep-green);
   opacity: 0.4;
 }
 
-.nova-submit-btn {
+.trade-submit-btn {
   background-color: var(--deep-green);
   color: var(--off-white);
   font-family: var(--font-sans);
@@ -124,14 +124,35 @@
   margin-top: 20px;
 }
 
-.nova-submit-btn:hover {
+.trade-submit-btn:hover {
   transform: translateY(-2px);
-  background-color: #3b4e3c;
+  background-color: var(--trade-btn-solid-hover);
+  color: #fffff3;
+}
+
+body.portal-trade .trade-submit-btn:hover {
+  color: #101513;
 }
 
 @media (max-width: 900px) {
-  .nova-contact-layout {
+  .trade-contact-layout {
     flex-direction: column;
     gap: 60px;
+  }
+
+  .trade-contact-title,
+  .trade-contact-desc {
+    max-width: 100%;
+  }
+
+  .trade-brutalist-form {
+    max-width: 100%;
+  }
+
+  .trade-submit-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    align-self: stretch;
   }
 }

@@ -1,19 +1,19 @@
-/* NovaProductsPage.css */
+/* Trade portal — page styles */
 
-.nova-products-layout {
+.trade-products-layout {
   display: flex;
   flex-direction: column;
   gap: 40px;
   padding-bottom: var(--spacing-section);
 }
 
-.nova-products-header {
-  border-bottom: 1px solid rgba(75, 96, 76, 0.2);
+.trade-products-header {
+  border-bottom: 1px solid var(--trade-border-medium);
   padding-bottom: 40px;
   margin-bottom: 40px;
 }
 
-.nova-filter-row {
+.trade-filter-row {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -23,20 +23,20 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
-.nova-filter-row::-webkit-scrollbar {
+.trade-filter-row::-webkit-scrollbar {
   display: none;
 }
 
-.nova-filter-group {
+.trade-filter-group {
   display: flex;
   flex-direction: row;
-  background-color: rgba(75, 96, 76, 0.05); /* very light tint of the deep green */
+  background-color: var(--trade-filter-track);
   border-radius: 40px;
   padding: 6px;
   gap: 4px;
 }
 
-.nova-filter-label {
+.trade-filter-label {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -45,7 +45,7 @@
   white-space: nowrap;
 }
 
-.nova-filter-btn {
+.trade-filter-btn {
   background: transparent;
   border: none;
   font-family: var(--font-sans);
@@ -60,44 +60,44 @@
   font-weight: 500;
 }
 
-.nova-filter-btn:hover {
+.trade-filter-btn:hover {
   opacity: 1;
 }
 
-.nova-filter-btn.active {
+.trade-filter-btn.active {
   background-color: var(--deep-green);
   color: var(--off-white);
   opacity: 1;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px var(--trade-card-shadow);
 }
 
-.nova-grid {
+.trade-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   row-gap: 60px;
 }
 
-.nova-card {
+.trade-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(75, 96, 76, 0.1);
+  border: 1px solid var(--trade-border-soft);
   padding: 20px;
   background-color: var(--off-white);
   transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.nova-card:hover {
-  background-color: #fff;
+.trade-card:hover {
+  background-color: var(--trade-card-hover-bg);
   transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
-  border-color: rgba(75, 96, 76, 0.2);
+  box-shadow: 0 12px 40px var(--trade-card-hover-shadow);
+  border-color: var(--trade-border-medium);
 }
 
-.nova-visual {
+.trade-visual {
   width: 100%;
   aspect-ratio: 1;
-  background-color: #fff;
+  background-color: var(--trade-image-bg);
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -105,18 +105,18 @@
   padding: 20px;
 }
 
-.nova-packshot {
+.trade-packshot {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.nova-info {
+.trade-info {
   display: flex;
   flex-direction: column;
 }
 
-.nova-name {
+.trade-name {
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 1.125rem;
@@ -124,7 +124,7 @@
   margin-bottom: 8px;
 }
 
-.nova-specs {
+.trade-specs {
   font-family: var(--font-sans);
   font-size: 0.8rem;
   opacity: 0.7;
@@ -132,7 +132,7 @@
   line-height: 1.6;
 }
 
-.nova-action {
+.trade-action {
   font-family: var(--font-sans);
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -146,22 +146,22 @@
 }
 
 @media (max-width: 1200px) {
-  .nova-grid {
+  .trade-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .nova-grid {
+  .trade-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .nova-filter-row {
+  .trade-filter-row {
     padding-bottom: 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .nova-grid {
+  .trade-grid {
     grid-template-columns: 1fr;
   }
 }

@@ -52,7 +52,7 @@ GET/PATCH /api/v1/admin/settings`}
 
         <div style={styles.sectionTitle}>Public</div>
         <Code>
-{`GET /api/v1/products?portal=studio|nova&category=...
+{`GET /api/v1/products?portal=studio|trade&category=...
 GET /api/v1/products/:slug
 GET /api/v1/projects
 GET /api/v1/projects/:slug

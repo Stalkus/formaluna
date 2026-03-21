@@ -327,7 +327,7 @@ export default function AdminProductEditorPage() {
                 checked={form.isNovaTrade}
                 onChange={(e) => setForm({ ...form, isNovaTrade: e.target.checked })}
               />
-              <span>Professional (Nova) portal</span>
+              <span>Trade / professional portal</span>
             </label>
             <label style={styles.switch}>
               <input

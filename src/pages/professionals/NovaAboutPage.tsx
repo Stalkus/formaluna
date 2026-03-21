@@ -8,23 +8,23 @@ const NovaAboutPage: React.FC = () => {
     <div className="page-wrapper container">
       <Navbar />
       
-      <div className="nova-about-page">
+      <div className="trade-about-page">
         <motion.div 
-          className="nova-about-hero"
+          className="trade-about-hero"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
         >
-          <h1 className="nova-statement">
+          <h1 className="trade-statement">
             Engineered for professionals. Driven by two decades of expertise.
           </h1>
-          <p className="nova-substatement">
+          <p className="trade-substatement">
             Forma Luna's trade division is founded by Fernand to serve the rigorous demands of electrical contractors. Backed by 20+ years of direct relationships with major lighting brands.
           </p>
         </motion.div>
 
         <motion.div 
-          className="nova-specs-section"
+          className="trade-specs-section"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -48,7 +48,7 @@ const NovaAboutPage: React.FC = () => {
         </motion.div>
 
         <motion.div 
-          className="nova-featured-projects"
+          className="trade-featured-projects"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}

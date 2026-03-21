@@ -6,7 +6,7 @@ import { Download, ArrowRight } from 'lucide-react';
 import './NovaProductDetailPage.css';
 
 // Technical data for B2B View (simplified without complex variants)
-const NOVA_MOCK_DB = {
+const TRADE_PRODUCT_MOCK = {
   1: {
     name: 'Vysn Tevo Track Profile',
     category: 'Linear Systems',
@@ -160,10 +160,10 @@ const NOVA_MOCK_DB = {
 const NovaProductDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   // @ts-expect-error dynamic mock lookup
-  const product = NOVA_MOCK_DB[id] || NOVA_MOCK_DB['default'];
+  const product = TRADE_PRODUCT_MOCK[id] || TRADE_PRODUCT_MOCK['default'];
   
   const relatedProducts = product.relatedIds 
-    ? product.relatedIds.map((rid: number) => ({ id: rid, ...NOVA_MOCK_DB[rid as keyof typeof NOVA_MOCK_DB] }))
+    ? product.relatedIds.map((rid: number) => ({ id: rid, ...TRADE_PRODUCT_MOCK[rid as keyof typeof TRADE_PRODUCT_MOCK] }))
     : [];
 
   useEffect(() => {
@@ -175,30 +175,30 @@ const NovaProductDetailPage: React.FC = () => {
       <Navbar />
       
       <motion.div 
-        className="nova-detail-layout"
+        className="trade-detail-layout"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
       >
-        <div className="nova-detail-visual">
-           <img src={product.image} alt={product.name} className="nova-detail-image" loading="lazy" />
+        <div className="trade-detail-visual">
+           <img src={product.image} alt={product.name} className="trade-detail-image" loading="lazy" />
         </div>
 
-        <div className="nova-detail-info">
-          <span className="nova-tech-badge">Wholesale & Trade Portal</span>
-          <h1 className="nova-detail-title">{product.name}</h1>
-          <p className="nova-detail-desc">{product.desc}</p>
+        <div className="trade-detail-info">
+          <span className="trade-tech-badge">Wholesale & Trade Portal</span>
+          <h1 className="trade-detail-title">{product.name}</h1>
+          <p className="trade-detail-desc">{product.desc}</p>
           
-          <div className="nova-spec-grid">
+          <div className="trade-spec-grid">
             {Object.entries(product.specs).map(([key, value]) => (
-              <div className="nova-spec-item" key={key}>
-                <span className="nova-spec-label">{key}</span>
-                <span className="nova-spec-value">{value as string}</span>
+              <div className="trade-spec-item" key={key}>
+                <span className="trade-spec-label">{key}</span>
+                <span className="trade-spec-value">{value as string}</span>
               </div>
             ))}
           </div>
 
-          <div className="nova-detail-cta">
+          <div className="trade-detail-cta">
              <button className="btn-download">
                <Download size={18} /> Detailed Spec Sheet (.PDF)
              </button>
@@ -206,7 +206,7 @@ const NovaProductDetailPage: React.FC = () => {
                Get Quote
              </Link>
           </div>
-          <p className="nova-login-prompt">Login to see pricing.</p>
+          <p className="trade-login-prompt">Login to see pricing.</p>
           
           <div style={{ marginTop: '24px' }}>
             <Link to="/professionals/products" className="btn-outline" style={{ border: 'none', paddingLeft: 0, textDecoration: 'none' }}>
@@ -220,28 +220,28 @@ const NovaProductDetailPage: React.FC = () => {
       {/* Dynamic Related Products Section */}
       {relatedProducts.length > 0 && (
         <motion.div 
-          className="nova-related-section"
+          className="trade-related-section"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <div className="nova-related-header">
-            <h2 className="nova-related-title">Technical Compatibilities</h2>
-            <Link to="/professionals/products" className="nova-related-link">
+          <div className="trade-related-header">
+            <h2 className="trade-related-title">Technical Compatibilities</h2>
+            <Link to="/professionals/products" className="trade-related-link">
               View All Components <ArrowRight size={16} />
             </Link>
           </div>
           
-          <div className="nova-related-grid">
+          <div className="trade-related-grid">
             {relatedProducts.map((item: any) => (
-              <Link to={`/professionals/products/${item.id}`} key={item.id} className="nova-related-card">
-                <div className="nova-related-image-container">
+              <Link to={`/professionals/products/${item.id}`} key={item.id} className="trade-related-card">
+                <div className="trade-related-image-container">
                   <img src={item.image} alt={item.name} loading="lazy" />
                 </div>
-                <div className="nova-related-data">
-                  <span className="nova-related-category">{item.category}</span>
-                  <h3 className="nova-related-name">{item.name}</h3>
+                <div className="trade-related-data">
+                  <span className="trade-related-category">{item.category}</span>
+                  <h3 className="trade-related-name">{item.name}</h3>
                 </div>
               </Link>
             ))}

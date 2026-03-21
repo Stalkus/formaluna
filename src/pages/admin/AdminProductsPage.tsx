@@ -129,7 +129,7 @@ export default function AdminProductsPage() {
                 </div>
                 <div style={styles.portalCol}>
                   {p.isStudioProject ? <span style={pill('studio')}>Studio</span> : null}
-                  {p.isNovaTrade ? <span style={pill('nova')}>Nova</span> : null}
+                  {p.isNovaTrade ? <span style={pill('trade')}>Trade</span> : null}
                   {!p.isStudioProject && !p.isNovaTrade ? <span style={pill('none')}>None</span> : null}
                 </div>
                 <div>{p.isPublished ? <span style={pill('ok')}>Yes</span> : <span style={pill('warn')}>No</span>}</div>
@@ -161,7 +161,7 @@ export default function AdminProductsPage() {
   );
 }
 
-function pill(kind: 'studio' | 'nova' | 'none' | 'ok' | 'warn'): React.CSSProperties {
+function pill(kind: 'studio' | 'trade' | 'none' | 'ok' | 'warn'): React.CSSProperties {
   const base: React.CSSProperties = {
     display: 'inline-block',
     fontSize: 12,
@@ -173,7 +173,7 @@ function pill(kind: 'studio' | 'nova' | 'none' | 'ok' | 'warn'): React.CSSProper
     marginRight: 6,
   };
   if (kind === 'studio') return { ...base, borderColor: 'rgba(99,102,241,0.40)', background: 'rgba(99,102,241,0.12)' };
-  if (kind === 'nova') return { ...base, borderColor: 'rgba(16,185,129,0.40)', background: 'rgba(16,185,129,0.12)' };
+  if (kind === 'trade') return { ...base, borderColor: 'rgba(16,185,129,0.40)', background: 'rgba(16,185,129,0.12)' };
   if (kind === 'ok') return { ...base, borderColor: 'rgba(34,197,94,0.35)', background: 'rgba(34,197,94,0.10)' };
   return { ...base, borderColor: 'rgba(234,179,8,0.35)', background: 'rgba(234,179,8,0.10)' };
 }

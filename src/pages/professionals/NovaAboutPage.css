@@ -1,11 +1,11 @@
-/* NovaAboutPage.css */
+/* Trade portal — page styles */
 
-.nova-about-page {
+.trade-about-page {
   display: flex;
   flex-direction: column;
 }
 
-.nova-about-hero {
+.trade-about-hero {
   min-height: 70vh;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
   padding-top: 0;
 }
 
-.nova-statement {
+.trade-statement {
   font-family: var(--font-serif);
   font-size: clamp(3.5rem, 5vw, 5.5rem);
   line-height: 1.1;
@@ -23,7 +23,7 @@
   margin-bottom: 2rem;
 }
 
-.nova-substatement {
+.trade-substatement {
   font-family: var(--font-sans);
   font-size: clamp(1.125rem, 1.5vw, 1.5rem);
   opacity: 0.8;
@@ -31,7 +31,7 @@
   line-height: 1.6;
 }
 
-.nova-specs-section {
+.trade-specs-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
@@ -68,7 +68,7 @@
 }
 
 @media (max-width: 900px) {
-  .nova-specs-section {
+  .trade-specs-section {
     grid-template-columns: 1fr;
   }
 }

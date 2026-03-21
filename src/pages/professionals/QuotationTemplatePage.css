@@ -1,7 +1,7 @@
-/* QuotationTemplatePage.css */
+/* Trade quotation print template */
 
 .quotation-wrapper {
-  background-color: #f7f7f0;
+  background-color: var(--off-white);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
 .quote-page {
   padding: 80px 60px;
   min-height: 1000px; /* Force an A4-like physical proportion for demo */
-  border-bottom: 1px dashed rgba(75, 96, 76, 0.2);
+  border-bottom: 1px dashed var(--trade-border-medium);
   display: flex;
   flex-direction: column;
 }
@@ -87,7 +87,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  border: 1px solid rgba(75, 96, 76, 0.1);
+  border: 1px solid var(--trade-border-soft);
   padding: 16px;
 }
 
@@ -95,7 +95,7 @@
   width: 80px;
   height: 80px;
   object-fit: contain;
-  background: #f7f7f0;
+  background: var(--trade-image-bg);
 }
 
 .quote-unit-name {
@@ -113,7 +113,7 @@
 .quote-table th,
 .quote-table td {
   padding: 16px 0;
-  border-bottom: 1px solid rgba(75, 96, 76, 0.1);
+  border-bottom: 1px solid var(--trade-border-soft);
   text-align: left;
 }
 

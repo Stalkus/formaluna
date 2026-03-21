@@ -1,0 +1,1073 @@
+{
+  "content": [
+    {
+      "id": "b2c_ab_sec_hero",
+      "settings": {
+        "flex_direction": "column",
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "0",
+          "bottom": "80",
+          "left": "0",
+          "isLinked": false
+        },
+        "padding_tablet": {
+          "unit": "px",
+          "top": "60",
+          "right": "0",
+          "bottom": "60",
+          "left": "0",
+          "isLinked": false
+        },
+        "padding_mobile": {
+          "unit": "px",
+          "top": "40",
+          "right": "0",
+          "bottom": "40",
+          "left": "0",
+          "isLinked": false
+        },
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": false
+        },
+        "background_color": "#f5f3f0",
+        "border_border": "none"
+      },
+      "elements": [
+        {
+          "id": "b2c_ab_h1",
+          "settings": {
+            "title_size": "h1",
+            "header_size": "h1",
+            "editor": "Illuminating architecture with intent and precision.",
+            "typography_typography": "custom",
+            "typography_font_family": "Georgia, serif",
+            "typography_font_size": {
+              "unit": "rem",
+              "size": 3.5
+            },
+            "typography_font_size_tablet": {
+              "unit": "rem",
+              "size": 3
+            },
+            "typography_font_size_mobile": {
+              "unit": "rem",
+              "size": 2.25
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+              "unit": "em",
+              "size": 1.1
+            },
+            "text_color": "#4b604c",
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "24",
+              "left": "0",
+              "isLinked": false
+            },
+            "margin_mobile": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "12",
+              "left": "0",
+              "isLinked": false
+            }
+          },
+          "elements": [],
+          "isInner": false,
+          "elType": "widget",
+          "widgetType": "heading"
+        },
+        {
+          "id": "b2c_ab_lead",
+          "settings": {
+            "editor": "Forma Luna is a bespoke lighting design studio. We guide your project from initial concept and lighting study through to flawless turnkey installation.",
+            "typography_typography": "custom",
+            "typography_font_family": "Arial, Helvetica, sans-serif",
+            "typography_font_size": {
+              "unit": "rem",
+              "size": 1.125
+            },
+            "typography_font_size_tablet": {
+              "unit": "rem",
+              "size": 1.0625
+            },
+            "typography_font_size_mobile": {
+              "unit": "rem",
+              "size": 1
+            },
+            "typography_font_weight": "400",
+            "typography_line_height": {
+              "unit": "em",
+              "size": 1.6
+            },
+            "text_color": "#4b604c",
+            "text_opacity": "0.85",
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            }
+          },
+          "elements": [],
+          "isInner": false,
+          "elType": "widget",
+          "widgetType": "text"
+        }
+      ],
+      "isInner": false,
+      "elType": "container"
+    },
+    {
+      "id": "b2c_ab_sec_body",
+      "settings": {
+        "flex_direction": "column",
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "0",
+          "bottom": "80",
+          "left": "0",
+          "isLinked": false
+        },
+        "padding_tablet": {
+          "unit": "px",
+          "top": "60",
+          "right": "0",
+          "bottom": "60",
+          "left": "0",
+          "isLinked": false
+        },
+        "padding_mobile": {
+          "unit": "px",
+          "top": "40",
+          "right": "0",
+          "bottom": "40",
+          "left": "0",
+          "isLinked": false
+        },
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": false
+        },
+        "background_color": "#FFFFFF",
+        "border_border": "none"
+      },
+      "elements": [
+        {
+          "id": "b2c_ab_row",
+          "settings": {
+            "flex_direction": "row",
+            "flex_wrap": "wrap",
+            "content_width": "full",
+            "flex_gap": {
+              "unit": "px",
+              "size": 40,
+              "column": "40",
+              "row": "40",
+              "isLinked": true
+            },
+            "flex_gap_tablet": {
+              "unit": "px",
+              "size": 32,
+              "column": "32",
+              "row": "32",
+              "isLinked": true
+            },
+            "flex_gap_mobile": {
+              "unit": "px",
+              "size": 24,
+              "column": "24",
+              "row": "24",
+              "isLinked": true
+            },
+            "flex_justify_content": "flex-start",
+            "flex_align_items": "flex-start",
+            "margin": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "padding_tablet": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "padding_mobile": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            },
+            "border_border": "none"
+          },
+          "elements": [
+            {
+              "id": "b2c_ab_col_txt",
+              "settings": {
+                "flex_direction": "column",
+                "content_width": "full",
+                "width": {
+                  "unit": "%",
+                  "size": 55
+                },
+                "width_tablet": {
+                  "unit": "%",
+                  "size": 100
+                },
+                "width_mobile": {
+                  "unit": "%",
+                  "size": 100
+                },
+                "margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding_tablet": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding_mobile": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "border_border": "none"
+              },
+              "elements": [
+                {
+                  "id": "b2c_ab_h2_art",
+                  "settings": {
+                    "title_size": "h2",
+                    "header_size": "h2",
+                    "editor": "The Art of Space",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Georgia, serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 2.5
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 2.25
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 2
+                    },
+                    "typography_font_weight": "700",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.15
+                    },
+                    "text_color": "#4b604c",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "16",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "heading"
+                },
+                {
+                  "id": "b2c_ab_p1",
+                  "settings": {
+                    "editor": "At the heart of Forma Luna is our founder, Fernand, who brings over 20 years of dedicated experience to the architectural lighting business. Having cultivated deep relationships and done business with major global lighting brands over two decades, Fernand recognized a crucial gap in the market.",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Arial, Helvetica, sans-serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 1.125
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 1.0625
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 1
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.6
+                    },
+                    "text_color": "#4b604c",
+                    "text_opacity": "0.85",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "24",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "text"
+                },
+                {
+                  "id": "b2c_ab_p2",
+                  "settings": {
+                    "editor": "We believe that light is the invisible architecture of any interior. It defines boundaries, guides the eye, and establishes the emotional resonance of a room before a single surface is touched.",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Arial, Helvetica, sans-serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 1.125
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 1.0625
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 1
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.6
+                    },
+                    "text_color": "#4b604c",
+                    "text_opacity": "0.85",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "24",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "text"
+                },
+                {
+                  "id": "b2c_ab_p3",
+                  "settings": {
+                    "editor": "Founded on principles of aesthetic purity and uncompromising technical rigor, Forma Luna partners with visionary architects, interior designers, and discerning homeowners to craft complete lighting narratives. From the initial photometric study of a raw space, through the painstaking selection of materials, down to the final turnkey installation, our process is entirely bespoke.",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Arial, Helvetica, sans-serif",
+                    "typography_font_size": {
+                      "unit": "rem",
+                      "size": 1.125
+                    },
+                    "typography_font_size_tablet": {
+                      "unit": "rem",
+                      "size": 1.0625
+                    },
+                    "typography_font_size_mobile": {
+                      "unit": "rem",
+                      "size": 1
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.6
+                    },
+                    "text_color": "#4b604c",
+                    "text_opacity": "0.85",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "32",
+                      "left": "0",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "text"
+                },
+                {
+                  "id": "b2c_ab_stats",
+                  "settings": {
+                    "flex_direction": "row",
+                    "flex_wrap": "wrap",
+                    "content_width": "full",
+                    "flex_gap": {
+                      "unit": "px",
+                      "size": 40,
+                      "column": "40",
+                      "row": "40",
+                      "isLinked": true
+                    },
+                    "flex_gap_tablet": {
+                      "unit": "px",
+                      "size": 32,
+                      "column": "32",
+                      "row": "32",
+                      "isLinked": true
+                    },
+                    "flex_gap_mobile": {
+                      "unit": "px",
+                      "size": 24,
+                      "column": "24",
+                      "row": "24",
+                      "isLinked": true
+                    },
+                    "flex_justify_content": "flex-start",
+                    "flex_align_items": "flex-start",
+                    "margin": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": false
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": false
+                    },
+                    "padding_tablet": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": false
+                    },
+                    "padding_mobile": {
+                      "unit": "px",
+                      "top": "0",
+                      "right": "0",
+                      "bottom": "0",
+                      "left": "0",
+                      "isLinked": false
+                    },
+                    "border_border": "none"
+                  },
+                  "elements": [
+                    {
+                      "id": "b2c_ab_s1",
+                      "settings": {
+                        "flex_direction": "column",
+                        "content_width": "full",
+                        "width": {
+                          "unit": "%",
+                          "size": 33.333
+                        },
+                        "width_tablet": {
+                          "unit": "%",
+                          "size": 33.333
+                        },
+                        "width_mobile": {
+                          "unit": "%",
+                          "size": 100
+                        },
+                        "margin": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "padding": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "padding_tablet": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "padding_mobile": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "border_border": "none"
+                      },
+                      "elements": [
+                        {
+                          "id": "b2c_ab_n1",
+                          "settings": {
+                            "title_size": "h2",
+                            "header_size": "h2",
+                            "editor": "20+",
+                            "typography_typography": "custom",
+                            "typography_font_family": "Georgia, serif",
+                            "typography_font_size": {
+                              "unit": "rem",
+                              "size": 2.5
+                            },
+                            "typography_font_size_tablet": {
+                              "unit": "rem",
+                              "size": 2.25
+                            },
+                            "typography_font_size_mobile": {
+                              "unit": "rem",
+                              "size": 2
+                            },
+                            "typography_font_weight": "700",
+                            "typography_line_height": {
+                              "unit": "em",
+                              "size": 1.15
+                            },
+                            "text_color": "#4b604c",
+                            "margin": {
+                              "unit": "px",
+                              "top": "0",
+                              "right": "0",
+                              "bottom": "8",
+                              "left": "0",
+                              "isLinked": false
+                            }
+                          },
+                          "elements": [],
+                          "isInner": false,
+                          "elType": "widget",
+                          "widgetType": "heading"
+                        },
+                        {
+                          "id": "b2c_ab_l1",
+                          "settings": {
+                            "editor": "Years Experience",
+                            "typography_typography": "custom",
+                            "typography_font_family": "Arial, Helvetica, sans-serif",
+                            "typography_font_size": {
+                              "unit": "rem",
+                              "size": 0.75
+                            },
+                            "typography_font_size_tablet": {
+                              "unit": "rem",
+                              "size": 0.75
+                            },
+                            "typography_font_size_mobile": {
+                              "unit": "rem",
+                              "size": 0.6875
+                            },
+                            "typography_font_weight": "600",
+                            "typography_text_transform": "uppercase",
+                            "typography_letter_spacing": {
+                              "unit": "em",
+                              "size": 0.1
+                            },
+                            "text_color": "#4b604c",
+                            "text_opacity": "0.65",
+                            "margin": {
+                              "unit": "px",
+                              "top": "0",
+                              "right": "0",
+                              "bottom": "8",
+                              "left": "0",
+                              "isLinked": false
+                            }
+                          },
+                          "elements": [],
+                          "isInner": false,
+                          "elType": "widget",
+                          "widgetType": "text"
+                        }
+                      ],
+                      "isInner": true,
+                      "elType": "container"
+                    },
+                    {
+                      "id": "b2c_ab_s2",
+                      "settings": {
+                        "flex_direction": "column",
+                        "content_width": "full",
+                        "width": {
+                          "unit": "%",
+                          "size": 33.333
+                        },
+                        "width_tablet": {
+                          "unit": "%",
+                          "size": 33.333
+                        },
+                        "width_mobile": {
+                          "unit": "%",
+                          "size": 100
+                        },
+                        "margin": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "padding": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "padding_tablet": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "padding_mobile": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "border_border": "none"
+                      },
+                      "elements": [
+                        {
+                          "id": "b2c_ab_n2",
+                          "settings": {
+                            "title_size": "h2",
+                            "header_size": "h2",
+                            "editor": "150+",
+                            "typography_typography": "custom",
+                            "typography_font_family": "Georgia, serif",
+                            "typography_font_size": {
+                              "unit": "rem",
+                              "size": 2.5
+                            },
+                            "typography_font_size_tablet": {
+                              "unit": "rem",
+                              "size": 2.25
+                            },
+                            "typography_font_size_mobile": {
+                              "unit": "rem",
+                              "size": 2
+                            },
+                            "typography_font_weight": "700",
+                            "typography_line_height": {
+                              "unit": "em",
+                              "size": 1.15
+                            },
+                            "text_color": "#4b604c",
+                            "margin": {
+                              "unit": "px",
+                              "top": "0",
+                              "right": "0",
+                              "bottom": "8",
+                              "left": "0",
+                              "isLinked": false
+                            }
+                          },
+                          "elements": [],
+                          "isInner": false,
+                          "elType": "widget",
+                          "widgetType": "heading"
+                        },
+                        {
+                          "id": "b2c_ab_l2",
+                          "settings": {
+                            "editor": "Turnkey Projects",
+                            "typography_typography": "custom",
+                            "typography_font_family": "Arial, Helvetica, sans-serif",
+                            "typography_font_size": {
+                              "unit": "rem",
+                              "size": 0.75
+                            },
+                            "typography_font_size_tablet": {
+                              "unit": "rem",
+                              "size": 0.75
+                            },
+                            "typography_font_size_mobile": {
+                              "unit": "rem",
+                              "size": 0.6875
+                            },
+                            "typography_font_weight": "600",
+                            "typography_text_transform": "uppercase",
+                            "typography_letter_spacing": {
+                              "unit": "em",
+                              "size": 0.1
+                            },
+                            "text_color": "#4b604c",
+                            "text_opacity": "0.65",
+                            "margin": {
+                              "unit": "px",
+                              "top": "0",
+                              "right": "0",
+                              "bottom": "8",
+                              "left": "0",
+                              "isLinked": false
+                            }
+                          },
+                          "elements": [],
+                          "isInner": false,
+                          "elType": "widget",
+                          "widgetType": "text"
+                        }
+                      ],
+                      "isInner": true,
+                      "elType": "container"
+                    },
+                    {
+                      "id": "b2c_ab_s3",
+                      "settings": {
+                        "flex_direction": "column",
+                        "content_width": "full",
+                        "width": {
+                          "unit": "%",
+                          "size": 33.333
+                        },
+                        "width_tablet": {
+                          "unit": "%",
+                          "size": 33.333
+                        },
+                        "width_mobile": {
+                          "unit": "%",
+                          "size": 100
+                        },
+                        "margin": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "padding": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "padding_tablet": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "padding_mobile": {
+                          "unit": "px",
+                          "top": "0",
+                          "right": "0",
+                          "bottom": "0",
+                          "left": "0",
+                          "isLinked": false
+                        },
+                        "border_border": "none"
+                      },
+                      "elements": [
+                        {
+                          "id": "b2c_ab_n3",
+                          "settings": {
+                            "title_size": "h2",
+                            "header_size": "h2",
+                            "editor": "Tier 1",
+                            "typography_typography": "custom",
+                            "typography_font_family": "Georgia, serif",
+                            "typography_font_size": {
+                              "unit": "rem",
+                              "size": 2.5
+                            },
+                            "typography_font_size_tablet": {
+                              "unit": "rem",
+                              "size": 2.25
+                            },
+                            "typography_font_size_mobile": {
+                              "unit": "rem",
+                              "size": 2
+                            },
+                            "typography_font_weight": "700",
+                            "typography_line_height": {
+                              "unit": "em",
+                              "size": 1.15
+                            },
+                            "text_color": "#4b604c",
+                            "margin": {
+                              "unit": "px",
+                              "top": "0",
+                              "right": "0",
+                              "bottom": "8",
+                              "left": "0",
+                              "isLinked": false
+                            }
+                          },
+                          "elements": [],
+                          "isInner": false,
+                          "elType": "widget",
+                          "widgetType": "heading"
+                        },
+                        {
+                          "id": "b2c_ab_l3",
+                          "settings": {
+                            "editor": "Global Brand Partners",
+                            "typography_typography": "custom",
+                            "typography_font_family": "Arial, Helvetica, sans-serif",
+                            "typography_font_size": {
+                              "unit": "rem",
+                              "size": 0.75
+                            },
+                            "typography_font_size_tablet": {
+                              "unit": "rem",
+                              "size": 0.75
+                            },
+                            "typography_font_size_mobile": {
+                              "unit": "rem",
+                              "size": 0.6875
+                            },
+                            "typography_font_weight": "600",
+                            "typography_text_transform": "uppercase",
+                            "typography_letter_spacing": {
+                              "unit": "em",
+                              "size": 0.1
+                            },
+                            "text_color": "#4b604c",
+                            "text_opacity": "0.65",
+                            "margin": {
+                              "unit": "px",
+                              "top": "0",
+                              "right": "0",
+                              "bottom": "8",
+                              "left": "0",
+                              "isLinked": false
+                            }
+                          },
+                          "elements": [],
+                          "isInner": false,
+                          "elType": "widget",
+                          "widgetType": "text"
+                        }
+                      ],
+                      "isInner": true,
+                      "elType": "container"
+                    }
+                  ],
+                  "isInner": true,
+                  "elType": "container"
+                }
+              ],
+              "isInner": true,
+              "elType": "container"
+            },
+            {
+              "id": "b2c_ab_col_img",
+              "settings": {
+                "flex_direction": "column",
+                "content_width": "full",
+                "width": {
+                  "unit": "%",
+                  "size": 45
+                },
+                "width_tablet": {
+                  "unit": "%",
+                  "size": 100
+                },
+                "width_mobile": {
+                  "unit": "%",
+                  "size": 100
+                },
+                "margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding_tablet": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "padding_mobile": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "border_border": "none"
+              },
+              "elements": [
+                {
+                  "id": "b2c_ab_img",
+                  "settings": {
+                    "image": {
+                      "id": 0,
+                      "url": "https://beneito-faure.com/wp-content/uploads/2025/02/portada_pomfusa_1.jpg",
+                      "alt": "Forma Luna Studio design",
+                      "source": "url",
+                      "size": ""
+                    },
+                    "image_size": "full",
+                    "width": {
+                      "unit": "%",
+                      "size": 100
+                    }
+                  },
+                  "elements": [],
+                  "isInner": false,
+                  "elType": "widget",
+                  "widgetType": "image"
+                }
+              ],
+              "isInner": true,
+              "elType": "container"
+            }
+          ],
+          "isInner": true,
+          "elType": "container"
+        }
+      ],
+      "isInner": false,
+      "elType": "container"
+    },
+    {
+      "id": "b2c_ab_sec_space",
+      "settings": {
+        "flex_direction": "column",
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "0",
+          "bottom": "80",
+          "left": "0",
+          "isLinked": false
+        },
+        "padding_tablet": {
+          "unit": "px",
+          "top": "60",
+          "right": "0",
+          "bottom": "60",
+          "left": "0",
+          "isLinked": false
+        },
+        "padding_mobile": {
+          "unit": "px",
+          "top": "40",
+          "right": "0",
+          "bottom": "40",
+          "left": "0",
+          "isLinked": false
+        },
+        "margin": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": false
+        },
+        "background_color": "#f5f3f0",
+        "border_border": "none",
+        "min_height": {
+          "unit": "px",
+          "size": 80
+        }
+      },
+      "elements": [],
+      "isInner": false,
+      "elType": "container"
+    }
+  ],
+  "page_settings": [
+    {
+      "settings": {
+        "custom_css": ""
+      }
+    }
+  ],
+  "version": "0.4",
+  "title": "B2C — About Us (Forma Luna Studio)",
+  "type": "page"
+}

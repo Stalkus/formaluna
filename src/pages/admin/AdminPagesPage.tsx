@@ -44,8 +44,8 @@ export default function AdminPagesPage() {
       const defaults = [
         { slug: 'projects-about', title: 'Projects About', contentJson: { blocks: [] } },
         { slug: 'projects-contact', title: 'Projects Contact', contentJson: { blocks: [] } },
-        { slug: 'nova-about', title: 'Nova About', contentJson: { blocks: [] } },
-        { slug: 'nova-contact', title: 'Nova Contact', contentJson: { blocks: [] } },
+        { slug: 'trade-about', title: 'Trade About', contentJson: { blocks: [] } },
+        { slug: 'trade-contact', title: 'Trade Contact', contentJson: { blocks: [] } },
       ];
       for (const d of defaults) {
         try {
