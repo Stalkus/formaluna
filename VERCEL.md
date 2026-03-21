@@ -1,44 +1,45 @@
-# Deploying the React app on Vercel + API elsewhere
+# Deploying on Vercel
 
-The admin UI calls the API with `fetch(..., { credentials: 'include' })`. You must align **three** things: `VITE_API_BASE`, `APP_ORIGIN`, and (when hosts differ) **`SESSION_COOKIE_SAMESITE`**.
+The admin UI uses `fetch(..., { credentials: 'include' })`. Cookie and CORS behavior depends on whether the API is **on the same Vercel project** (recommended) or on **another host**.
 
-## 1. Vercel (frontend)
+## Same project: frontend + API (this repo)
 
-1. Open the project on [Vercel](https://vercel.com) → **Settings** → **Environment Variables**.
-2. Add for **Production** (and **Preview** if you use preview URLs):
+Vercel runs the Express app from `api/index.ts` (see `vercel.json` rewrites). The browser can call **`/api/v1/...` on the same origin**, so you usually **do not** set `VITE_API_BASE`.
 
-| Name | Value | Notes |
+1. **Environment variables** (Production + Preview as needed):
+
+| Name | Required | Notes |
 | --- | --- | --- |
-| `VITE_API_BASE` | `https://your-api-host.example.com` | **No trailing slash.** Must be the public HTTPS URL of your Express API. |
+| `DATABASE_URL` | Yes | Postgres connection string for Prisma. |
+| `JWT_SECRET` | Yes | Strong secret for tokens. |
+| `APP_ORIGIN` | Optional | Exact site origin (`https://your-domain.com`). If unset, CORS still allows `https://${VERCEL_URL}` on Vercel. |
+| `SESSION_COOKIE_SAMESITE` | Optional | Defaults suit same-site; use **`lax`** (or omit) for same deployment. |
+| `VITE_API_BASE` | Optional | Only if the API is on **another** origin (split setup below). |
 
-3. **Redeploy** the project after saving variables. Vite bakes `VITE_*` in at **build time**, so a new deployment is required.
+2. **Build**: `vercel-build` runs Prisma generate, compiles `backend/` to `backend/dist`, then builds the Vite app. Redeploy after changing env vars that affect the API at runtime.
 
-Optional: set the same variable for **Preview** if previews should talk to a staging API.
+3. **Health**: After deploy, open `https://<your-host>/api/health` — expect JSON `{ "ok": true }`.
 
-## 2. API server (Express / `backend/`)
+## Split setup: React on Vercel, API elsewhere
 
-On whatever hosts your API (Railway, Render, Fly.io, VPS, etc.), set:
+If the API is on another domain, set on **Vercel (frontend)**:
+
+| Name | Value |
+| --- | --- |
+| `VITE_API_BASE` | `https://your-api-host.example.com` (no trailing slash) |
+
+Redeploy after changing `VITE_*` (baked in at build time).
+
+On the **API server**, set:
 
 | Name | Example | Notes |
 | --- | --- | --- |
-| `APP_ORIGIN` | `https://formaluna.vercel.app` | Exact site origin the browser uses (scheme + host, no path). |
-| `SESSION_COOKIE_SAMESITE` | `none` | **Required** when the page is on Vercel and the API is on **another** domain. Uses `Secure` cookies. |
-| `NODE_ENV` | `production` | |
+| `APP_ORIGIN` | `https://formaluna.vercel.app` | Browser origin (scheme + host, no path). |
+| `SESSION_COOKIE_SAMESITE` | `none` | **Required** for cross-site cookies; uses `Secure`. |
 
-Keep your existing `DATABASE_URL`, `JWT_SECRET`, etc.
+**Why `none`?** With `lax`, many browsers will not send the session cookie on cross-origin `fetch` from your Vercel app to the API, so login can look successful but `/admin` stays logged out.
 
-**Why `SESSION_COOKIE_SAMESITE=none`?**  
-With `lax`, many browsers will **not** send the session cookie on cross-origin `fetch` from `formaluna.vercel.app` to your API, so login appears to succeed but `/admin` loads as logged out.
+## Local development
 
-## 3. Checklist
-
-- [ ] `VITE_API_BASE` set on Vercel and project redeployed  
-- [ ] `APP_ORIGIN=https://formaluna.vercel.app` on the API  
-- [ ] `SESSION_COOKIE_SAMESITE=none` on the API (split-domain setup)  
-- [ ] API served over **HTTPS**  
-- [ ] CORS: API already allows `credentials` for the single `APP_ORIGIN` origin  
-
-## 4. Local development
-
-Leave `VITE_API_BASE` unset locally; the Vite dev server proxies `/api` to `http://localhost:8080` (`vite.config.ts`).  
-Use `APP_ORIGIN=http://localhost:5173` and `SESSION_COOKIE_SAMESITE=lax` in `backend/.env`.
+Leave `VITE_API_BASE` unset; the Vite dev server proxies `/api` to `http://localhost:8080` (`vite.config.ts`).  
+Use `APP_ORIGIN=http://localhost:5173` and `SESSION_COOKIE_SAMESITE=lax` in `backend/.env` (see `backend/.env.example`).

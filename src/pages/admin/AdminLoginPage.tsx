@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { API_BASE, adminApi } from './adminApi';
+import { API_BASE, adminApi, isApiBaseConfigured } from './adminApi';
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
@@ -62,8 +62,18 @@ export default function AdminLoginPage() {
         </div>
 
         <p style={styles.subtitle}>
-          Local-only admin login. If this is your first run, click “Create Admin”.
+          Sign in with the admin account from your API server. First run: create admin on the API, then sign in here.
         </p>
+
+        {!isApiBaseConfigured ? (
+          <div style={styles.deployWarn}>
+            <strong>API URL not configured for this build.</strong> On Vercel add environment variable{' '}
+            <code style={styles.code}>VITE_API_BASE</code> = your backend origin (e.g.{' '}
+            <code style={styles.code}>https://api.yourdomain.com</code>, no trailing slash), then{' '}
+            <strong>redeploy</strong>. Otherwise login POSTs hit this static site and return 405. See{' '}
+            <code style={styles.code}>VERCEL.md</code>.
+          </div>
+        ) : null}
 
         <div style={styles.row}>
           <button onClick={onBootstrap} disabled={isBusy} style={styles.secondaryBtn}>
@@ -98,7 +108,10 @@ export default function AdminLoginPage() {
         {status ? <div style={styles.status}>{status}</div> : null}
 
         <div style={styles.hint}>
-          Backend must be running at <code>{API_BASE}/api/v1</code>.
+          API base for this build:{' '}
+          <code>{API_BASE || '(same origin / proxy in local dev)'}</code>
+          <br />
+          Paths: <code>/api/v1/…</code>
         </div>
       </div>
     </div>
@@ -178,5 +191,22 @@ const styles: Record<string, React.CSSProperties> = {
     lineHeight: 1.4,
   },
   hint: { marginTop: 14, opacity: 0.7, fontSize: 12, lineHeight: 1.4 },
+  deployWarn: {
+    marginTop: 14,
+    padding: 12,
+    borderRadius: 10,
+    background: 'rgba(248, 113, 113, 0.12)',
+    border: '1px solid rgba(248, 113, 113, 0.45)',
+    fontSize: 13,
+    lineHeight: 1.45,
+    color: '#fecaca',
+  },
+  code: {
+    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+    fontSize: 11,
+    padding: '1px 5px',
+    borderRadius: 4,
+    background: 'rgba(0,0,0,0.25)',
+  },
 };
 

@@ -1,7 +1,10 @@
-import { API_BASE } from '../../config/api';
-export { API_BASE };
+import { API_BASE, isApiBaseConfigured } from '../../config/api';
+export { API_BASE, isApiBaseConfigured };
 
 type Json = Record<string, any>;
+
+const vercelHint =
+  'Deploy misconfiguration: set VITE_API_BASE in Vercel → Environment Variables to your real API URL (no trailing slash), then redeploy. See VERCEL.md in the repo.';
 
 async function request<T = Json>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
@@ -10,10 +13,29 @@ async function request<T = Json>(path: string, init?: RequestInit): Promise<T> {
     ...init,
   });
   const text = await res.text();
-  const data = text ? JSON.parse(text) : null;
+  let data: Json | null = null;
+  try {
+    data = text ? (JSON.parse(text) as Json) : null;
+  } catch {
+    if (!res.ok) {
+      if (res.status === 405 || res.status === 404) {
+        if (!isApiBaseConfigured || text.includes('<!DOCTYPE')) {
+          throw new Error(`${res.status} — ${vercelHint}`);
+        }
+      }
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
+    throw new Error('Invalid JSON from API');
+  }
   if (!res.ok) {
-    const message = (data && (data.error || data.message)) || `${res.status} ${res.statusText}`;
-    throw new Error(message);
+    if (res.status === 405 || res.status === 404) {
+      if (!isApiBaseConfigured || text.includes('<!DOCTYPE')) {
+        throw new Error(`${res.status} — ${vercelHint}`);
+      }
+    }
+    const message =
+      (data && (data.error || data.message)) || `${res.status} ${res.statusText}`;
+    throw new Error(typeof message === 'string' ? message : `${res.status} ${res.statusText}`);
   }
   return data as T;
 }
