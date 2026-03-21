@@ -9,7 +9,3 @@ dist
 # backend not needed for frontend deploy
 backend/
 
-# WordPress — full Hostinger export is huge; keep only custom theme + plugin (added with git add -f)
-wordpress/*.sql
-wordpress/public_html/
-

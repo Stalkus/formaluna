@@ -178,7 +178,7 @@ async function main() {
         blocks: [
           {
             type: 'paragraph',
-            text: 'This page is stored as JSON (Elementor-style blocks). Edit via Admin → Pages.',
+            text: 'This page is stored as structured JSON blocks. Edit via Admin → Pages.',
           },
         ],
       },
