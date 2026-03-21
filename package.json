@@ -7,6 +7,7 @@
     "backend"
   ],
   "scripts": {
+    "postinstall": "npm run db:generate",
     "dev": "vite",
     "dev:api": "npm run dev --prefix backend",
     "db:up": "docker compose -f backend/docker-compose.yml up -d",
