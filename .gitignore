@@ -1,11 +1,14 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+backend/dist/
+
+# OS / editor
 .DS_Store
 
-# env (never commit secrets)
+# Environment (never commit secrets)
 .env
 .env.*.local
-
-# backend not needed for frontend deploy
-backend/
-
+backend/.env
