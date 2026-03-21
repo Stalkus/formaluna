@@ -1,9 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
+import 'express-async-errors';
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+import { ZodError } from 'zod';
 
 import { prisma } from './prisma.js';
 import { env } from './lib/env.js';
@@ -47,6 +49,19 @@ app.use('/api/v1', pagesRouter);
 
 app.use((_req, res) => {
   res.status(404).json({ error: 'Not found' });
+});
+
+app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+  if (err instanceof ZodError) {
+    return res.status(400).json({ error: 'Invalid request', details: err.flatten() });
+  }
+  // eslint-disable-next-line no-console
+  console.error(err);
+  const message = err instanceof Error ? err.message : 'Internal server error';
+  res.status(500).json({
+    error: 'Internal server error',
+    ...(env.NODE_ENV !== 'production' ? { message } : {}),
+  });
 });
 
 export default app;
