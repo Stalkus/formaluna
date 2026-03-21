@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
           <form className="footer-brutalist-form" onSubmit={(e) => e.preventDefault()}>
             <input type="text" className="footer-input" placeholder={isProfessionals ? "Company Name" : "Name"} required />
             <input type="email" className="footer-input" placeholder="Email Address" required />
-            <textarea className="footer-input" placeholder={isProfessionals ? "Technical Enquiry" : "Project Overview"} rows={3} required></textarea>
+            <textarea className="footer-input footer-input-textarea" placeholder={isProfessionals ? "Technical Enquiry" : "Project Overview"} rows={2} required></textarea>
             <button type="submit" className="footer-submit">Submit</button>
           </form>
         </div>

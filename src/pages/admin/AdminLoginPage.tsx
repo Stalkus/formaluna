@@ -113,7 +113,7 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: 'center',
     padding: 24,
     background:
-      'radial-gradient(1200px 600px at 20% 10%, rgba(255,255,255,0.08), transparent 40%), radial-gradient(1000px 500px at 80% 40%, rgba(255,255,255,0.06), transparent 50%), #0b0f14',
+      'radial-gradient(1200px 600px at 20% 10%, rgba(255,255,255,0.08), transparent 40%), radial-gradient(1000px 500px at 80% 40%, rgba(255,255,255,0.06), transparent 50%), #2a3d32',
     color: '#e8eef7',
   },
   card: {

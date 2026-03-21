@@ -45,10 +45,10 @@
 }
 
 .navbar.trade.scrolled {
-  background: rgba(16, 21, 19, 0.92);
+  background: rgba(45, 62, 48, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .navbar.trade .nav-menu-btn {
@@ -59,7 +59,7 @@
 
 .navbar.trade .nav-links.open {
   border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(12, 16, 14, 0.94);
+  background: rgba(36, 50, 40, 0.97);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -236,7 +236,7 @@
     padding: 16px;
     border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(10, 12, 10, 0.72);
+    background: rgba(33, 50, 35, 0.88);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
   }

@@ -2,12 +2,12 @@
 
 .global-footer {
   width: 100%;
-  padding: 120px 5% 80px;
+  padding: 56px 5% 40px;
   background-color: var(--deep-green);
   color: var(--off-white);
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 36px;
   position: relative;
   z-index: 10;
 }
@@ -15,7 +15,7 @@
 .footer-top {
   display: flex;
   justify-content: space-between;
-  gap: 60px;
+  gap: 40px;
 }
 
 .footer-brand {
@@ -24,19 +24,19 @@
 
 .footer-logo {
   font-family: var(--font-sans);
-  font-size: 2rem;
+  font-size: 1.65rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
   display: block;
 }
 
 .footer-contact-details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   opacity: 0.8;
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 .footer-contact-details a {
@@ -55,22 +55,23 @@
 
 .footer-form-title {
   font-family: var(--font-serif);
-  font-size: 2.5rem;
-  margin-bottom: 32px;
+  font-size: 2rem;
+  margin-bottom: 18px;
+  line-height: 1.15;
   color: var(--off-white);
 }
 
 .footer-brutalist-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 14px;
 }
 
 .footer-input {
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 243, 0.4);
-  padding: 12px 0;
+  padding: 8px 0;
   font-family: var(--font-sans);
   font-size: 1rem;
   color: var(--off-white);
@@ -88,16 +89,22 @@
   opacity: 0.4;
 }
 
+.footer-input-textarea {
+  min-height: 2.75rem;
+  resize: vertical;
+  line-height: 1.45;
+}
+
 .footer-submit {
   background-color: var(--off-white);
   color: var(--deep-green);
   font-family: var(--font-sans);
   font-weight: 500;
-  padding: 1rem 2rem;
+  padding: 0.65rem 1.35rem;
   border: none;
   cursor: pointer;
   align-self: flex-start;
-  margin-top: 16px;
+  margin-top: 6px;
   transition: opacity 0.3s ease;
 }
 
@@ -109,9 +116,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 243, 0.2);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   opacity: 0.6;
 }
 
@@ -126,15 +133,16 @@
 
 @media (max-width: 900px) {
   .global-footer {
-    padding: 80px 5% 60px;
-    gap: 60px;
+    padding: 44px 5% 36px;
+    gap: 32px;
   }
   .footer-top {
     flex-direction: column;
-    gap: 40px;
+    gap: 28px;
   }
   .footer-form-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    margin-bottom: 14px;
   }
   .footer-bottom {
     flex-direction: column;

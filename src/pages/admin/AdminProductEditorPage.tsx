@@ -576,7 +576,7 @@ const styles: Record<string, React.CSSProperties> = {
     minHeight: '100vh',
     padding: 24,
     background:
-      'radial-gradient(1200px 600px at 15% 10%, rgba(255,255,255,0.07), transparent 45%), radial-gradient(900px 500px at 85% 35%, rgba(99, 102, 241, 0.10), transparent 55%), #0b0f14',
+      'radial-gradient(1200px 600px at 15% 10%, rgba(255,255,255,0.07), transparent 45%), radial-gradient(900px 500px at 85% 35%, rgba(99, 102, 241, 0.10), transparent 55%), #2a3d32',
     color: '#e8eef7',
   },
   topbar: {

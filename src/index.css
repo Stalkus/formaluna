@@ -8,6 +8,8 @@
 
   --spacing-section: 160px;
   --spacing-grid: 2rem;
+  /* Space below fixed navbar before page title / hero fold */
+  --page-content-offset: 188px;
 
   /* Trade portal surfaces (studio defaults) */
   --trade-image-bg: #ffffff;
@@ -24,22 +26,22 @@
   --trade-related-image-well: #fafafa;
 }
 
-/* B2B Trade portal — inverted brand (dark field, light type) */
+/* B2B Trade portal — dark brand green field, light type (no neutral black) */
 body.portal-trade {
-  --off-white: #101513;
+  --off-white: #243228;
   --deep-green: #e8ebe4;
-  --trade-image-bg: #0c100e;
-  --trade-card-hover-bg: #1c2421;
+  --trade-image-bg: #1e2b23;
+  --trade-card-hover-bg: #2c3b31;
   --trade-muted-green: rgba(232, 235, 228, 0.65);
   --trade-border-soft: rgba(255, 255, 255, 0.1);
   --trade-border-medium: rgba(255, 255, 255, 0.16);
   --trade-filter-track: rgba(255, 255, 255, 0.06);
-  --trade-card-shadow: rgba(0, 0, 0, 0.35);
-  --trade-card-hover-shadow: rgba(0, 0, 0, 0.45);
-  --trade-related-hover-shadow: rgba(0, 0, 0, 0.4);
+  --trade-card-shadow: rgba(20, 35, 28, 0.45);
+  --trade-card-hover-shadow: rgba(15, 28, 22, 0.5);
+  --trade-related-hover-shadow: rgba(15, 28, 22, 0.45);
   --trade-btn-solid-hover: #c5cbc0;
-  --trade-related-card-bg: #161d1a;
-  --trade-related-image-well: #0e1210;
+  --trade-related-card-bg: #28362c;
+  --trade-related-image-well: #1a2620;
 }
 
 * {
@@ -134,7 +136,7 @@ button.btn-outline:hover {
 /* Page Common Utilities */
 .page-wrapper {
   min-height: 100vh;
-  padding-top: 132px; /* Space for fixed navbar + extra gap */
+  padding-top: var(--page-content-offset);
   padding-bottom: var(--spacing-section);
 }
 
@@ -156,7 +158,7 @@ button.btn-outline:hover {
 
 /* Trade portal: footer reads as a deep anchor (not the swapped token pair) */
 body.portal-trade .global-footer {
-  background-color: #080b0a;
+  background-color: #1a2620;
   color: #dde1db;
 }
 
@@ -186,7 +188,7 @@ body.portal-trade .footer-input:focus {
 
 body.portal-trade .footer-submit {
   background-color: #e8ebe4;
-  color: #101513;
+  color: #243228;
 }
 
 body.portal-trade .footer-submit:hover {
@@ -206,6 +208,7 @@ body.portal-trade .footer-links a {
   :root {
     --spacing-section: 96px;
     --spacing-grid: 1.25rem;
+    --page-content-offset: 132px;
   }
 
   .container {
@@ -213,7 +216,7 @@ body.portal-trade .footer-links a {
   }
 
   .page-wrapper {
-    padding-top: 104px;
+    padding-top: var(--page-content-offset);
     padding-bottom: var(--spacing-section);
   }
 
