@@ -1,45 +1,71 @@
-# Formaluna Backend
+# Formaluna API (CRM / catalogue backend)
 
-Express REST API + Postgres (Prisma) + S3/R2 uploads.
+Node + Express + PostgreSQL + Prisma. This is the **headless** counterpart to the React site: it covers what WordPress + WooCommerce + Elementor would do for a lighting supplier, without running PHP.
 
-## Local setup
+## Feature mapping
 
-1) Copy env file:
+| WordPress / WooCommerce / Elementor idea | This backend |
+| --- | --- |
+| Products, SKUs, prices, publish/draft | `Product` model + `/api/v1/admin/products` |
+| Product categories (B2C vs B2B visibility) | `ProductCategory` + `/api/v1/admin/categories` + `GET /api/v1/categories?portal=studio\|trade` |
+| Technical datasheets (PDF) | `Asset` with `kind: PRODUCT_TECH_SHEET` (+ optional S3/R2 presign) |
+| Custom pages, flexible layouts | `Page.contentJson` (block JSON — Elementor-style) + `/api/v1/admin/pages` — public: `GET /api/v1/pages/:slug` (React renders at `/projects/cms/:slug` and `/professionals/cms/:slug`) |
+| Projects / case studies | `Project` + gallery URLs + product links |
+| B2B registration & approval | `User` role `B2B` + `ApprovalStatus` + admin approve/reject |
+| Public catalogue + gated pricing | `GET /api/v1/products` hides `priceCents` unless session is approved B2B |
 
-- `cp .env.example .env`
+## Setup
 
-2) Start Postgres:
+1. **PostgreSQL** running locally or hosted. From the **repo root**, Docker is available as:
 
-- `docker compose up -d`
+```bash
+npm run db:up
+```
 
-3) Install deps:
+(This uses `backend/docker-compose.yml` on port **5433**, matching `DATABASE_URL` in `.env.example`.)
 
-- `npm i`
+2. Copy env:
 
-4) Run migrations + generate client:
+```bash
+cd backend
+cp .env.example .env
+```
 
-- `npx prisma migrate dev`
+Required variables (see `src/lib/env.ts`):
 
-5) (Optional) Bootstrap first admin:
+- `DATABASE_URL` — PostgreSQL connection string  
+- `JWT_SECRET` — long random string (20+ chars)  
+- `APP_ORIGIN` — frontend origin for CORS, e.g. `http://localhost:5173`  
+- `SESSION_COOKIE_SAMESITE` — default `lax`; use `none` when the site and API are on different domains (see repo `VERCEL.md`)  
+- `ADMIN_EMAIL` / `ADMIN_PASSWORD` — optional; used by `POST /api/v1/admin/bootstrap` and `prisma db seed`
 
-- Set `ADMIN_EMAIL` + `ADMIN_PASSWORD` in `.env`
-- `POST /admin/bootstrap`
+3. Install, migrate, seed, run:
 
-6) Start API:
+```bash
+cd backend
+npm install
+npm run db:migrate
+npm run db:seed
+npm run dev
+```
 
-- `npm run dev`
+From the **repo root** you can run the API with `npm run dev:api` (after `cd backend && npm install` once).
 
-API runs at `http://localhost:8080`.
+API listens on `PORT` (default **8080**). Health: `GET /health`.
 
-## Key endpoints (starter set)
+## Production: Vercel frontend + API on another host
 
-- Base URL: `/api/v1`
-- `POST /api/v1/auth/register` (B2B user signup → pending approval)
-- `POST /api/v1/auth/login`, `POST /api/v1/auth/logout`, `GET /api/v1/auth/me`, `POST /api/v1/auth/refresh`
-- `POST /api/v1/admin/bootstrap` (create first admin if none exist)
-- `POST /api/v1/admin/login`, `POST /api/v1/admin/logout`, `GET /api/v1/admin/me`
-- `GET /api/v1/admin/users`, `POST /api/v1/admin/users/:id/approve`, `POST /api/v1/admin/users/:id/reject`
-- `POST /api/v1/admin/uploads/presign` (S3/R2 presigned upload URL + asset record)
-- `GET/POST/PATCH/DELETE /api/v1/admin/products`
-- `GET/POST/PATCH/DELETE /api/v1/admin/projects`
-- Public: `GET /api/v1/products`, `GET /api/v1/products/:slug`, `GET /api/v1/projects`, `GET /api/v1/projects/:slug`
+See the repo root **[VERCEL.md](../VERCEL.md)**. Set `APP_ORIGIN` to your Vercel URL, `SESSION_COOKIE_SAMESITE=none`, and on Vercel set `VITE_API_BASE` to this API’s public URL (then redeploy).
+
+## Frontend wiring
+
+The Vite app proxies `/api` → `http://localhost:8080` in development (`vite.config.ts`). With an empty `VITE_API_BASE`, the browser calls `/api/v1/...` on the same host as the dev server.
+
+Production: set `VITE_API_BASE` to your API URL (no trailing slash).
+
+## Portal flags on products
+
+- **Studio (B2C showcase):** `isStudioProject: true` — listed with `GET /api/v1/products?portal=studio`  
+- **Trade (B2B):** `isNovaTrade: true` — listed with `GET /api/v1/products?portal=trade` (`portal=nova` still accepted for backwards compatibility)
+
+A product can be in one or both portals. Categories can be limited per portal with `visibleStudio` / `visibleTrade` on `ProductCategory`.

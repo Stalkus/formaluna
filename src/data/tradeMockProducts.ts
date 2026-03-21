@@ -1,0 +1,73 @@
+/** Static fallback when the API has no trade products (local demo). */
+export const TRADE_MOCK_PRODUCTS = [
+  {
+    id: 1,
+    name: 'Vysn Tevo Track',
+    category: 'Linear Systems',
+    specs: '48V System | Suspended/Recessed | Black/White | Lengths: 1m, 2m, 3m',
+    packshot: 'https://images.unsplash.com/photo-1510074377623-8cf13fb86c08?auto=format&fit=crop&q=80&w=700&h=700',
+  },
+  {
+    id: 2,
+    name: 'Beneito Faure Pulso',
+    category: 'Downlights',
+    specs: '75mm Cutout | 12W | 1000lm | CRI95+ | IP44 | Phase-cut',
+    packshot: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&q=80&w=700&h=700',
+  },
+  {
+    id: 3,
+    name: 'Vysn Mezy CCT Panel',
+    category: 'Surface',
+    specs: 'Selectable 3000K-4000K | 40W | 3600lm | UGR<19 | Office Grade',
+    packshot: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=700&h=700',
+  },
+  {
+    id: 4,
+    name: 'Beneito Faure Driver',
+    category: 'Drivers/Gear',
+    specs: '48V Constant Voltage | 150W | DALI-2 Driver | Ripple-free',
+    packshot: 'https://images.unsplash.com/photo-1510074377623-8cf13fb86c08?auto=format&fit=crop&q=80&w=700&h=700',
+  },
+  {
+    id: 5,
+    name: 'Vysn Onis Spot',
+    category: 'Downlights',
+    specs: '100mm Cutout | 18W | 1800lm | IP20 | Tiltable 30°',
+    packshot: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&q=80&w=700&h=700',
+  },
+  {
+    id: 6,
+    name: 'Vysn Industrial High Bay',
+    category: 'Surface',
+    specs: 'Warehouse Spec | 150W | 21,000lm | IP65 | 1-10V Dimming',
+    packshot: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=700&h=700',
+  },
+  {
+    id: 7,
+    name: 'Beneito Faure Box Surface',
+    category: 'Surface',
+    specs: 'Twin Square Mount | 2x10W | 1800lm | Rotatable 350°',
+    packshot: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=700&h=700',
+  },
+  {
+    id: 8,
+    name: 'Vysn Linea Continuous',
+    category: 'Linear Systems',
+    specs: 'Trunking System | Connectable up to 50m | 5 Wire Through-wiring',
+    packshot: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=700&h=700',
+  },
+  {
+    id: 9,
+    name: 'Beneito Faure EM Module',
+    category: 'Drivers/Gear',
+    specs: 'Universal Emergency Pack | 3 Hour Output | LiFePO4 Battery',
+    packshot: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=700&h=700',
+  },
+  {
+    id: 10,
+    name: 'Vysn Vasari Mirror',
+    category: 'Surface',
+    specs: 'IP44 Bathroom Spec | 1200mm | Backlit 3000K | Defogger Array',
+    packshot: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=700&h=700',
+  },
+];

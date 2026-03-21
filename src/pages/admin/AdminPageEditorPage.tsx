@@ -91,6 +91,18 @@ export default function AdminPageEditorPage() {
         <div style={styles.note}>
           This is intentionally simple to start. Next we can switch to a block editor UI (hero blocks, rich text, image blocks,
           CTA blocks) while keeping this JSON structure behind the scenes.
+          <br />
+          <br />
+          <strong>Public URL</strong> (same JSON, rendered):{' '}
+          <code style={{ opacity: 0.9 }}>
+            /projects/cms/{pageSlug}
+          </code>{' '}
+          or{' '}
+          <code style={{ opacity: 0.9 }}>
+            /professionals/cms/{pageSlug}
+          </code>
+          . Supported blocks: <code>paragraph</code>, <code>heading</code> (level 1–3), <code>divider</code>,{' '}
+          <code>image</code> (src, alt, caption), <code>bulletList</code> (items).
         </div>
       </div>
 

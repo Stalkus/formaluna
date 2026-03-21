@@ -16,6 +16,8 @@ const EnvSchema = z.object({
   NODE_ENV: z.string().default('development'),
   PORT: z.coerce.number().default(8080),
   APP_ORIGIN: z.string().url(),
+  /** Use `none` when the browser loads the site from a different host than the API (e.g. Vercel frontend + separate API). Requires HTTPS. */
+  SESSION_COOKIE_SAMESITE: z.enum(['lax', 'none', 'strict']).default('lax'),
   DATABASE_URL: z.string().min(1),
   JWT_SECRET: z.string().min(20),
   JWT_EXPIRES_IN: z.string().default('7d'),

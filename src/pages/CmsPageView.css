@@ -1,0 +1,150 @@
+.cms-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0 4rem;
+}
+
+.cms-header {
+  margin-bottom: 2rem;
+}
+
+.cms-back-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--deep-green, #4b604c);
+  opacity: 0.85;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.cms-back-link:hover {
+  opacity: 1;
+}
+
+body.portal-trade .cms-back-link {
+  color: var(--off-white, #f4f1ea);
+  opacity: 0.9;
+}
+
+.cms-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--deep-green, #2d3e30);
+}
+
+body.portal-trade .cms-title {
+  color: var(--off-white, #f4f1ea);
+}
+
+.cms-body {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(45, 62, 48, 0.92);
+}
+
+body.portal-trade .cms-body {
+  color: rgba(244, 241, 234, 0.88);
+}
+
+.cms-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cms-p {
+  margin: 0;
+}
+
+.cms-h1 {
+  font-size: 1.75rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.cms-h2 {
+  font-size: 1.35rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.cms-h3 {
+  font-size: 1.15rem;
+  margin: 1rem 0 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cms-divider {
+  border: none;
+  border-top: 1px solid rgba(75, 96, 76, 0.2);
+  margin: 1.5rem 0;
+}
+
+body.portal-trade .cms-divider {
+  border-top-color: rgba(244, 241, 234, 0.15);
+}
+
+.cms-figure {
+  margin: 0.5rem 0;
+}
+
+.cms-img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.cms-caption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.cms-ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.cms-ul li {
+  margin-bottom: 0.35rem;
+}
+
+.cms-block--raw,
+.cms-block--unknown {
+  font-size: 0.8rem;
+  overflow-x: auto;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(75, 96, 76, 0.06);
+  border: 1px solid rgba(75, 96, 76, 0.12);
+}
+
+body.portal-trade .cms-block--raw,
+body.portal-trade .cms-block--unknown {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cms-empty {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.cms-status {
+  padding: 3rem 5%;
+  text-align: center;
+}
+
+.cms-status--error {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.cms-status--error p {
+  margin-bottom: 1rem;
+}

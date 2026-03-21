@@ -7,7 +7,9 @@ export default function AdminApiDocsPage() {
       <div style={styles.topbar}>
         <div>
           <div style={styles.h1}>API Docs (Starter)</div>
-          <div style={styles.sub}>Base URL: {API_BASE}/api/v1</div>
+          <div style={styles.sub}>
+            Base URL: {API_BASE ? `${API_BASE}/api/v1` : '(same origin — use Vite dev proxy /api → backend :8080)'}
+          </div>
         </div>
         <div style={styles.actions}>
           <Link to="/admin" style={styles.linkBtn as any}>
@@ -38,6 +40,10 @@ POST /api/v1/admin/users/:id/approve
 POST /api/v1/admin/users/:id/reject
 
 GET/POST/PATCH/DELETE /api/v1/admin/products
+GET    /api/v1/admin/categories
+POST   /api/v1/admin/categories
+PATCH  /api/v1/admin/categories/:id
+DELETE /api/v1/admin/categories/:id
 GET/POST/PATCH/DELETE /api/v1/admin/projects
 
 POST /api/v1/admin/uploads/presign
@@ -52,7 +58,8 @@ GET/PATCH /api/v1/admin/settings`}
 
         <div style={styles.sectionTitle}>Public</div>
         <Code>
-{`GET /api/v1/products?portal=studio|trade&category=...
+{`GET /api/v1/categories?portal=studio|trade
+GET /api/v1/products?portal=studio|trade|nova&category=slug|name
 GET /api/v1/products/:slug
 GET /api/v1/projects
 GET /api/v1/projects/:slug

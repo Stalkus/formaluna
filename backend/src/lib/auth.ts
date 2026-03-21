@@ -10,20 +10,29 @@ export type JwtPayload = {
 const COOKIE_NAME = 'formaluna_session';
 
 export function signSession(payload: JwtPayload) {
-  return jwt.sign(payload, env.JWT_SECRET, { expiresIn: env.JWT_EXPIRES_IN });
+  return jwt.sign(payload, env.JWT_SECRET, {
+    expiresIn: env.JWT_EXPIRES_IN,
+  } as jwt.SignOptions);
+}
+
+function cookieOptions(): {
+  httpOnly: boolean;
+  sameSite: 'lax' | 'none' | 'strict';
+  secure: boolean;
+  path: string;
+} {
+  const sameSite = env.SESSION_COOKIE_SAMESITE;
+  const secure = sameSite === 'none' ? true : env.NODE_ENV === 'production';
+  return { httpOnly: true, sameSite, secure, path: '/' };
 }
 
 export function setSessionCookie(res: import('express').Response, token: string) {
-  res.cookie(COOKIE_NAME, token, {
-    httpOnly: true,
-    sameSite: 'lax',
-    secure: env.NODE_ENV === 'production',
-    path: '/',
-  });
+  res.cookie(COOKIE_NAME, token, cookieOptions());
 }
 
 export function clearSessionCookie(res: import('express').Response) {
-  res.clearCookie(COOKIE_NAME, { path: '/' });
+  const o = cookieOptions();
+  res.clearCookie(COOKIE_NAME, { path: o.path, sameSite: o.sameSite, secure: o.secure });
 }
 
 export function readSession(req: import('express').Request): JwtPayload | null {

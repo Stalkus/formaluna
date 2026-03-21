@@ -1,4 +1,5 @@
-export const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8080';
+import { API_BASE } from '../../config/api';
+export { API_BASE };
 
 type Json = Record<string, any>;
 
@@ -72,5 +73,16 @@ export const adminApi = {
   settings: () => request('/api/v1/admin/settings'),
   updateSettings: (input: any) =>
     request('/api/v1/admin/settings', { method: 'PATCH', body: JSON.stringify(input) }),
+
+  productCategories: () => request('/api/v1/admin/categories'),
+  createProductCategory: (input: Record<string, unknown>) =>
+    request('/api/v1/admin/categories', { method: 'POST', body: JSON.stringify(input) }),
+  updateProductCategory: (id: string, input: Record<string, unknown>) =>
+    request(`/api/v1/admin/categories/${encodeURIComponent(id)}`, {
+      method: 'PATCH',
+      body: JSON.stringify(input),
+    }),
+  deleteProductCategory: (id: string) =>
+    request(`/api/v1/admin/categories/${encodeURIComponent(id)}`, { method: 'DELETE' }),
 };
 

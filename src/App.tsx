@@ -32,6 +32,8 @@ import AdminPagesPage from './pages/admin/AdminPagesPage';
 import AdminPageEditorPage from './pages/admin/AdminPageEditorPage';
 import AdminSettingsPage from './pages/admin/AdminSettingsPage';
 import AdminApiDocsPage from './pages/admin/AdminApiDocsPage';
+import AdminCategoriesPage from './pages/admin/AdminCategoriesPage';
+import CmsPageView from './pages/CmsPageView';
 
 function App() {
   return (
@@ -42,6 +44,8 @@ function App() {
 
         {/* Admin Dashboard (separate from site layout) */}
         <Route path="/admin/login" element={<AdminLoginPage />} />
+        {/* Super-admin login at trade URL (e.g. Vercel: /professionals/login) */}
+        <Route path="/professionals/login" element={<AdminLoginPage />} />
         <Route path="/admin" element={<AdminDashboardPage />} />
         <Route path="/admin/products" element={<AdminProductsPage />} />
         <Route path="/admin/products/new" element={<AdminProductEditorPage />} />
@@ -51,6 +55,7 @@ function App() {
         <Route path="/admin/projects/:id" element={<AdminProjectEditorPage />} />
         <Route path="/admin/pages" element={<AdminPagesPage />} />
         <Route path="/admin/pages/:slug" element={<AdminPageEditorPage />} />
+        <Route path="/admin/categories" element={<AdminCategoriesPage />} />
         <Route path="/admin/settings" element={<AdminSettingsPage />} />
         <Route path="/admin/api" element={<AdminApiDocsPage />} />
 
@@ -62,17 +67,19 @@ function App() {
           <Route path="/projects/projects/:id" element={<ProjectDetailPage />} />
           <Route path="/projects/moodboards" element={<MoodboardsPage />} />
           <Route path="/projects/products" element={<ProductsPage />} />
-          <Route path="/projects/products/:id" element={<ProjectProductDetailPage />} />
+          <Route path="/projects/products/:slug" element={<ProjectProductDetailPage />} />
           <Route path="/projects/contact" element={<ContactPage />} />
+          <Route path="/projects/cms/:slug" element={<CmsPageView />} />
           <Route path="/projects" element={<Navigate to="/projects/projects" replace />} />
 
           {/* Trade portal routes */}
           <Route path="/professionals/about" element={<NovaAboutPage />} />
           <Route path="/professionals/products" element={<NovaProductsPage />} />
-          <Route path="/professionals/products/:id" element={<NovaProductDetailPage />} />
+          <Route path="/professionals/products/:slug" element={<NovaProductDetailPage />} />
           <Route path="/professionals/contact" element={<NovaContactPage />} />
-          <Route path="/professionals/login" element={<NovaLoginPage />} />
+          <Route path="/professionals/trade-login" element={<NovaLoginPage />} />
           <Route path="/professionals/quotation-template" element={<QuotationTemplatePage />} />
+          <Route path="/professionals/cms/:slug" element={<CmsPageView />} />
           <Route path="/professionals" element={<Navigate to="/professionals/about" replace />} />
         </Route>
         

@@ -121,7 +121,7 @@ const ProjectDetailPage: React.FC = () => {
 
           <div className="project-related-grid">
             {usedProducts.map((p) => (
-              <Link to={`/projects/products/${p.id}`} key={p.id} className="project-related-card">
+              <Link to={`/projects/products/legacy-studio-${p.id}`} key={p.id} className="project-related-card">
                 <div className="project-related-image-container">
                   <img src={p.packshot} alt={p.name} loading="lazy" />
                 </div>

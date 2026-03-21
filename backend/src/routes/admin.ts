@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import { z } from 'zod';
+import type { Prisma } from '@prisma/client';
+import { Prisma as PrismaConst } from '@prisma/client';
 import { prisma } from '../prisma.js';
 import { clearSessionCookie, readSession, setSessionCookie, signSession } from '../lib/auth.js';
 import { requireAdmin } from '../lib/require.js';
@@ -152,7 +154,16 @@ adminRouter.post('/pages', async (req, res) => {
       contentJson: z.unknown().optional().nullable(),
     })
     .parse(req.body);
-  const page = await prisma.page.create({ data: { slug: body.slug, title: body.title, contentJson: body.contentJson ?? null } });
+  const page = await prisma.page.create({
+    data: {
+      slug: body.slug,
+      title: body.title,
+      contentJson:
+        body.contentJson === undefined || body.contentJson === null
+          ? PrismaConst.DbNull
+          : (body.contentJson as Prisma.InputJsonValue),
+    },
+  });
   res.status(201).json({ page });
 });
 
@@ -168,17 +179,84 @@ adminRouter.patch('/pages/:slug', async (req, res) => {
     where: { slug },
     data: {
       title: body.title,
-      contentJson: body.contentJson === undefined ? undefined : body.contentJson,
+      contentJson:
+        body.contentJson === undefined
+          ? undefined
+          : body.contentJson === null
+            ? PrismaConst.DbNull
+            : (body.contentJson as Prisma.InputJsonValue),
     },
   });
   res.json({ page });
 });
 
+// Product categories (CMS — like WooCommerce product categories)
+adminRouter.get('/categories', async (_req, res) => {
+  const categories = await prisma.productCategory.findMany({
+    orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
+  });
+  res.json({ categories });
+});
+
+adminRouter.post('/categories', async (req, res) => {
+  const body = z
+    .object({
+      slug: z.string().min(1),
+      name: z.string().min(1),
+      description: z.string().optional().nullable(),
+      sortOrder: z.number().int().optional(),
+      visibleStudio: z.boolean().optional(),
+      visibleTrade: z.boolean().optional(),
+    })
+    .parse(req.body);
+  const category = await prisma.productCategory.create({
+    data: {
+      slug: body.slug,
+      name: body.name,
+      description: body.description ?? null,
+      sortOrder: body.sortOrder ?? 0,
+      visibleStudio: body.visibleStudio ?? true,
+      visibleTrade: body.visibleTrade ?? true,
+    },
+  });
+  res.status(201).json({ category });
+});
+
+adminRouter.patch('/categories/:id', async (req, res) => {
+  const id = z.string().min(1).parse(req.params.id);
+  const body = z
+    .object({
+      slug: z.string().min(1).optional(),
+      name: z.string().min(1).optional(),
+      description: z.string().optional().nullable(),
+      sortOrder: z.number().int().optional(),
+      visibleStudio: z.boolean().optional(),
+      visibleTrade: z.boolean().optional(),
+    })
+    .parse(req.body);
+  const category = await prisma.productCategory.update({ where: { id }, data: body });
+  res.json({ category });
+});
+
+adminRouter.delete('/categories/:id', async (req, res) => {
+  const id = z.string().min(1).parse(req.params.id);
+  await prisma.productCategory.delete({ where: { id } });
+  res.json({ ok: true });
+});
+
+const productInclude = {
+  assets: true,
+  categoryRef: true,
+  projectLinks: { include: { project: true } },
+  relatedFrom: true,
+  relatedTo: true,
+} as const;
+
 // Products CRUD (minimal)
 adminRouter.get('/products', async (_req, res) => {
   const products = await prisma.product.findMany({
     orderBy: { updatedAt: 'desc' },
-    include: { assets: true, projectLinks: { include: { project: true } }, relatedFrom: true, relatedTo: true },
+    include: productInclude,
   });
   res.json({ products });
 });
@@ -187,7 +265,7 @@ adminRouter.get('/products/:id', async (req, res) => {
   const id = z.string().min(1).parse(req.params.id);
   const product = await prisma.product.findUnique({
     where: { id },
-    include: { assets: true, projectLinks: { include: { project: true } }, relatedFrom: true, relatedTo: true },
+    include: productInclude,
   });
   if (!product) return res.status(404).json({ error: 'Not found' });
   res.json({ product });
@@ -199,7 +277,8 @@ adminRouter.post('/products', async (req, res) => {
       slug: z.string().min(1),
       sku: z.string().min(1).optional(),
       name: z.string().min(1),
-      category: z.string().min(1).optional(),
+      category: z.string().min(1).optional().nullable(),
+      categoryId: z.preprocess((v) => (v === '' ? null : v), z.string().min(1).nullable().optional()),
       description: z.string().optional(),
       packshotUrl: z.string().url().optional(),
       lifestyleUrl: z.string().url().optional(),
@@ -213,7 +292,13 @@ adminRouter.post('/products', async (req, res) => {
     })
     .parse(req.body);
 
-  const product = await prisma.product.create({ data: { ...body } });
+  const { categoryId, specs, ...rest } = body;
+  const data: Prisma.ProductCreateInput = { ...rest };
+  if (specs !== undefined) {
+    data.specs = specs === null ? PrismaConst.DbNull : (specs as Prisma.InputJsonValue);
+  }
+  if (categoryId) data.categoryRef = { connect: { id: categoryId } };
+  const product = await prisma.product.create({ data });
   res.status(201).json({ product });
 });
 
@@ -224,7 +309,8 @@ adminRouter.patch('/products/:id', async (req, res) => {
       slug: z.string().min(1).optional(),
       sku: z.string().min(1).optional().nullable(),
       name: z.string().min(1).optional(),
-      category: z.string().min(1).optional(),
+      category: z.string().min(1).optional().nullable(),
+      categoryId: z.preprocess((v) => (v === '' ? null : v), z.string().min(1).nullable().optional()),
       description: z.string().optional().nullable(),
       packshotUrl: z.string().url().optional().nullable(),
       lifestyleUrl: z.string().url().optional().nullable(),
@@ -237,7 +323,17 @@ adminRouter.patch('/products/:id', async (req, res) => {
       specs: z.unknown().optional().nullable(),
     })
     .parse(req.body);
-  const product = await prisma.product.update({ where: { id }, data: body });
+
+  const { categoryId, specs, ...scalarRest } = body;
+  const data: Prisma.ProductUpdateInput = { ...scalarRest };
+  if (specs !== undefined) {
+    data.specs = specs === null ? PrismaConst.DbNull : (specs as Prisma.InputJsonValue);
+  }
+  if (categoryId !== undefined) {
+    if (categoryId === null) data.categoryRef = { disconnect: true };
+    else data.categoryRef = { connect: { id: categoryId } };
+  }
+  const product = await prisma.product.update({ where: { id }, data });
   res.json({ product });
 });
 

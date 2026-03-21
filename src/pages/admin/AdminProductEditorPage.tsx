@@ -20,6 +20,8 @@ type Product = {
   sku?: string | null;
   name: string;
   category?: string | null;
+  categoryId?: string | null;
+  categoryRef?: { id: string; slug: string; name: string } | null;
   description?: string | null;
   packshotUrl?: string | null;
   lifestyleUrl?: string | null;
@@ -50,6 +52,7 @@ export default function AdminProductEditorPage() {
     sku: '',
     name: '',
     category: '',
+    categoryId: '',
     description: '',
     packshotUrl: '',
     lifestyleUrl: '',
@@ -63,6 +66,7 @@ export default function AdminProductEditorPage() {
   });
 
   const [allProducts, setAllProducts] = useState<{ id: string; name: string }[]>([]);
+  const [categories, setCategories] = useState<{ id: string; name: string; slug: string }[]>([]);
   const [relatedIds, setRelatedIds] = useState<string[]>([]);
 
   const [assetUrl, setAssetUrl] = useState('');
@@ -77,9 +81,11 @@ export default function AdminProductEditorPage() {
     if (!(me as any)?.admin?.id) return navigate('/admin/login', { replace: true });
     setAdminEmail((me as any).admin.email ?? '');
 
-    const p = await adminApi.products();
+    const [p, catRes] = await Promise.all([adminApi.products(), adminApi.productCategories()]);
     const list = (p as any).products ?? [];
     setAllProducts(list.map((x: any) => ({ id: x.id, name: x.name })));
+    const cats = (catRes as any).categories ?? [];
+    setCategories(cats.map((c: any) => ({ id: c.id, name: c.name, slug: c.slug })));
 
     if (isNew) {
       setProduct(null);
@@ -93,6 +99,7 @@ export default function AdminProductEditorPage() {
       sku: prod.sku ?? '',
       name: prod.name ?? '',
       category: prod.category ?? '',
+      categoryId: prod.categoryId ?? '',
       description: prod.description ?? '',
       packshotUrl: prod.packshotUrl ?? '',
       lifestyleUrl: prod.lifestyleUrl ?? '',
@@ -130,6 +137,7 @@ export default function AdminProductEditorPage() {
         sku: form.sku.trim() || null,
         name: form.name.trim(),
         category: form.category.trim() || null,
+        categoryId: form.categoryId.trim() || null,
         description: form.description.trim() || null,
         packshotUrl: form.packshotUrl.trim() || null,
         lifestyleUrl: form.lifestyleUrl.trim() || null,
@@ -278,12 +286,27 @@ export default function AdminProductEditorPage() {
             <Field label="Name">
               <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} style={styles.input} />
             </Field>
-            <Field label="Category">
+            <Field label="Category (legacy label)">
               <input
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
                 style={styles.input}
+                placeholder="Optional if CMS category is set"
               />
+            </Field>
+            <Field label="CMS category">
+              <select
+                value={form.categoryId}
+                onChange={(e) => setForm({ ...form, categoryId: e.target.value })}
+                style={styles.input}
+              >
+                <option value="">— None —</option>
+                {categories.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name} ({c.slug})
+                  </option>
+                ))}
+              </select>
             </Field>
           </div>
 

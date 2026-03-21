@@ -84,8 +84,8 @@ const Navbar: React.FC = () => {
         )}
         {isProfessionals && (
           <Link
-            to="/professionals/login"
-            title="Trade Login"
+            to="/professionals/trade-login"
+            title="Trade account login"
             className="nav-icon-link"
             onClick={() => setIsMobileOpen(false)}
           >

@@ -46,6 +46,24 @@ model User {
   lastLoginAt    DateTime?
 }
 
+model ProductCategory {
+  id            String    @id @default(cuid())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  slug          String    @unique
+  name          String
+  description   String?
+  sortOrder     Int       @default(0)
+
+  /// Shown on B2C / Studio portal catalogue
+  visibleStudio Boolean   @default(true)
+  /// Shown on B2B / Trade portal catalogue
+  visibleTrade  Boolean   @default(true)
+
+  products      Product[]
+}
+
 model Product {
   id            String    @id @default(cuid())
   createdAt     DateTime  @default(now())
@@ -54,7 +72,11 @@ model Product {
   slug          String    @unique
   sku           String?
   name          String
+  /// Legacy free-text label (optional if categoryRef is set)
   category      String?
+  categoryId    String?
+  categoryRef   ProductCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
   description   String?
 
   packshotUrl   String?
@@ -79,6 +101,8 @@ model Product {
   projectLinks  ProjectProduct[]
   relatedFrom   RelatedProduct[] @relation("related_from")
   relatedTo     RelatedProduct[] @relation("related_to")
+
+  @@index([categoryId])
 }
 
 model Project {

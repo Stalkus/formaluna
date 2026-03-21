@@ -101,6 +101,9 @@ export default function AdminDashboardPage() {
           <Link to="/admin/pages" style={styles.secondaryBtn as any}>
             Manage pages
           </Link>
+          <Link to="/admin/categories" style={styles.secondaryBtn as any}>
+            Categories
+          </Link>
           <Link to="/admin/settings" style={styles.secondaryBtn as any}>
             Settings
           </Link>

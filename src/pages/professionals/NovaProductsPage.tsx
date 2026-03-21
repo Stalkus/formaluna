@@ -1,98 +1,79 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import { Download } from 'lucide-react';
+import { fetchProductCategories, fetchPublishedProducts } from '../../api/publicApi';
+import { TRADE_MOCK_PRODUCTS } from '../../data/tradeMockProducts';
+import { specsPreview } from '../../lib/specsPreview';
+import type { PublicProductListItem } from '../../types/catalog';
 import './NovaProductsPage.css';
 
-const CATEGORIES = ['All', 'Downlights', 'Surface', 'Linear Systems', 'Drivers/Gear'];
+const TRADE_MOCK_PUBLIC: PublicProductListItem[] = TRADE_MOCK_PRODUCTS.map((p) => ({
+  id: String(p.id),
+  slug: `legacy-trade-${p.id}`,
+  name: p.name,
+  category: p.category,
+  categorySlug: null,
+  description: null,
+  packshotUrl: p.packshot,
+  lifestyleUrl: null,
+  specs: { Summary: p.specs },
+  technicalSheets: [],
+}));
 
-const PRODUCTS = [
-  {
-    id: 1,
-    name: 'Vysn Tevo Track',
-    category: 'Linear Systems',
-    specs: '48V System | Suspended/Recessed | Black/White | Lengths: 1m, 2m, 3m',
-    packshot: 'https://images.unsplash.com/photo-1510074377623-8cf13fb86c08?auto=format&fit=crop&q=80&w=700&h=700',
-  },
-  {
-    id: 2,
-    name: 'Beneito Faure Pulso',
-    category: 'Downlights',
-    specs: '75mm Cutout | 12W | 1000lm | CRI95+ | IP44 | Phase-cut',
-    packshot: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&q=80&w=700&h=700',
-  },
-  {
-    id: 3,
-    name: 'Vysn Mezy CCT Panel',
-    category: 'Surface',
-    specs: 'Selectable 3000K-4000K | 40W | 3600lm | UGR<19 | Office Grade',
-    packshot: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=700&h=700',
-  },
-  {
-    id: 4,
-    name: 'Beneito Faure Driver',
-    category: 'Drivers/Gear',
-    specs: '48V Constant Voltage | 150W | DALI-2 Driver | Ripple-free',
-    packshot: 'https://images.unsplash.com/photo-1510074377623-8cf13fb86c08?auto=format&fit=crop&q=80&w=700&h=700',
-  },
-  {
-    id: 5,
-    name: 'Vysn Onis Spot',
-    category: 'Downlights',
-    specs: '100mm Cutout | 18W | 1800lm | IP20 | Tiltable 30°',
-    packshot: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&q=80&w=700&h=700',
-  },
-  {
-    id: 6,
-    name: 'Vysn Industrial High Bay',
-    category: 'Surface',
-    specs: 'Warehouse Spec | 150W | 21,000lm | IP65 | 1-10V Dimming',
-    packshot: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=700&h=700',
-  },
-  {
-    id: 7,
-    name: 'Beneito Faure Box Surface',
-    category: 'Surface',
-    specs: 'Twin Square Mount | 2x10W | 1800lm | Rotatable 350°',
-    packshot: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=700&h=700',
-  },
-  {
-    id: 8,
-    name: 'Vysn Linea Continuous',
-    category: 'Linear Systems',
-    specs: 'Trunking System | Connectable up to 50m | 5 Wire Through-wiring',
-    packshot: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=700&h=700',
-  },
-  {
-    id: 9,
-    name: 'Beneito Faure EM Module',
-    category: 'Drivers/Gear',
-    specs: 'Universal Emergency Pack | 3 Hour Output | LiFePO4 Battery',
-    packshot: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=700&h=700',
-  },
-  {
-    id: 10,
-    name: 'Vysn Vasari Mirror',
-    category: 'Surface',
-    specs: 'IP44 Bathroom Spec | 1200mm | Backlit 3000K | Defogger Array',
-    packshot: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=700&h=700',
-  }
+const FALLBACK_TABS = [
+  { key: 'all', label: 'All' },
+  ...Array.from(new Set(TRADE_MOCK_PRODUCTS.map((p) => p.category))).map((name) => ({ key: name, label: name })),
 ];
 
 const NovaProductsPage: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [products, setProducts] = useState<PublicProductListItem[]>(TRADE_MOCK_PUBLIC);
+  const [tabs, setTabs] = useState(FALLBACK_TABS);
+  const [activeKey, setActiveKey] = useState('all');
+  const [loadNote, setLoadNote] = useState<string | null>(null);
 
-  const filteredProducts = activeFilter === 'All' 
-    ? PRODUCTS 
-    : PRODUCTS.filter(p => p.category === activeFilter);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const [cats, prods] = await Promise.all([
+          fetchProductCategories('trade'),
+          fetchPublishedProducts({ portal: 'trade' }),
+        ]);
+        if (cancelled) return;
+        if (prods.length > 0) {
+          setProducts(prods);
+          setTabs([{ key: 'all', label: 'All' }, ...cats.map((c) => ({ key: c.slug, label: c.name }))]);
+          setLoadNote(null);
+        } else {
+          setLoadNote('No published trade products in the API yet — showing demo portfolio.');
+        }
+      } catch {
+        if (cancelled) return;
+        setProducts(TRADE_MOCK_PUBLIC);
+        setTabs(FALLBACK_TABS);
+        setLoadNote('API unavailable — showing demo portfolio. Start the backend and run migrations + seed.');
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const filteredProducts = useMemo(() => {
+    if (activeKey === 'all') return products;
+    return products.filter(
+      (p) => p.categorySlug === activeKey || p.category === activeKey,
+    );
+  }, [products, activeKey, tabs]);
 
   return (
     <div className="page-wrapper container">
       <Navbar />
-      
+
       <div className="trade-products-layout">
-        <motion.header 
+        <motion.header
           className="trade-products-header"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -100,17 +81,20 @@ const NovaProductsPage: React.FC = () => {
         >
           <h1 className="hero-title">Technical Portfolio.</h1>
           <p className="hero-subtitle">Comprehensive specifications and photometric data for trade professionals.</p>
-          
+          {loadNote ? (
+            <p style={{ marginTop: 12, fontSize: '0.9rem', opacity: 0.75, maxWidth: 640 }}>{loadNote}</p>
+          ) : null}
+
           <div className="trade-filter-row">
             <span className="trade-filter-label">Filter:</span>
             <div className="trade-filter-group">
-              {CATEGORIES.map(cat => (
-                <button 
-                  key={cat}
-                  className={`trade-filter-btn ${activeFilter === cat ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(cat)}
+              {tabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  className={`trade-filter-btn ${activeKey === tab.key ? 'active' : ''}`}
+                  onClick={() => setActiveKey(tab.key)}
                 >
-                  {cat}
+                  {tab.label}
                 </button>
               ))}
             </div>
@@ -119,30 +103,56 @@ const NovaProductsPage: React.FC = () => {
 
         <motion.div layout className="trade-grid">
           <AnimatePresence>
-            {filteredProducts.map((product) => (
-              <motion.div 
-                key={product.id} 
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
-              >
-                <Link to={`/professionals/products/${product.id}`} className="trade-card" style={{ textDecoration: 'none' }}>
-                  <div className="trade-visual" style={{ position: 'relative' }}>
-                    <span style={{ position: 'absolute', top: '16px', left: '16px', backgroundColor: 'var(--deep-green)', color: 'var(--off-white)', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', padding: '4px 8px' }}>Specifier Data</span>
-                    <img src={product.packshot} alt={product.name} className="trade-packshot" loading="lazy" />
-                  </div>
-                  <div className="trade-info">
-                    <h3 className="trade-name">{product.name}</h3>
-                    <p className="trade-specs">{product.specs}</p>
-                    <div className="trade-action">
-                      <Download size={16} /> Data Sheet (.PDF)
+            {filteredProducts.map((product) => {
+              const line = specsPreview(product.specs) || (product.description ?? '').slice(0, 120);
+              return (
+                <motion.div
+                  key={product.slug}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Link
+                    to={`/professionals/products/${encodeURIComponent(product.slug)}`}
+                    className="trade-card"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <div className="trade-visual" style={{ position: 'relative' }}>
+                      <span
+                        style={{
+                          position: 'absolute',
+                          top: '16px',
+                          left: '16px',
+                          backgroundColor: 'var(--deep-green)',
+                          color: 'var(--off-white)',
+                          fontSize: '0.65rem',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.1em',
+                          padding: '4px 8px',
+                        }}
+                      >
+                        Specifier Data
+                      </span>
+                      <img
+                        src={product.packshotUrl || ''}
+                        alt={product.name}
+                        className="trade-packshot"
+                        loading="lazy"
+                      />
                     </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+                    <div className="trade-info">
+                      <h3 className="trade-name">{product.name}</h3>
+                      <p className="trade-specs">{line}</p>
+                      <div className="trade-action">
+                        <Download size={16} /> Data Sheet (.PDF)
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </motion.div>
       </div>
