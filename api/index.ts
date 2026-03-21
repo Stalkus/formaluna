@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Vercel typechecks this entry; backend/dist is JS-only output (no .d.ts for ../backend/dist/app.js).
 /**
  * Vercel routes each `api/*.ts` file to a single path segment only, so no file can
  * match `/api/v1/admin/...` by itself. We rewrite `/api/(.*)` → `/api/index?path=$1`

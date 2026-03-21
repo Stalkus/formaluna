@@ -11,6 +11,8 @@
     "dev:api": "npm run dev --prefix backend",
     "db:up": "docker compose -f backend/docker-compose.yml up -d",
     "db:down": "docker compose -f backend/docker-compose.yml down",
+    "db:migrate": "npm run db:migrate --workspace formaluna-backend",
+    "db:generate": "npm run prisma:generate --workspace formaluna-backend",
     "build": "tsc && vite build",
     "vercel-build": "cd backend && npx prisma generate && npm run build && cd .. && npm run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
