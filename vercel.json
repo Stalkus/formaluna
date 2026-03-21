@@ -1,8 +1,10 @@
 {
   "buildCommand": "npm run vercel-build",
+  "outputDirectory": "dist",
   "rewrites": [
     { "handle": "filesystem" },
-    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/api/(.*)", "destination": "/api/index?path=$1" },
+    { "source": "/api", "destination": "/api/index" },
     {
       "source": "/((?!api/).*)",
       "destination": "/index.html"

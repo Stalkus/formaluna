@@ -18,7 +18,9 @@ Vercel runs the Express app from `api/index.ts` (see `vercel.json` rewrites). Th
 
 2. **Build**: `vercel-build` runs Prisma generate, compiles `backend/` to `backend/dist`, then builds the Vite app. Redeploy after changing env vars that affect the API at runtime.
 
-3. **Health**: After deploy, open `https://<your-host>/api/health` — expect JSON `{ "ok": true }`.
+3. **Health**: After deploy, open `https://<your-host>/api/health` — expect JSON `{ "ok": true }`. If you see the marketing page HTML instead, the deployment is missing the serverless API or `vercel.json` rewrites; confirm the latest `api/index.ts` and `vercel.json` are deployed.
+
+**Routing note:** Vercel’s `api/*.ts` files each map to a single URL segment, so deep paths like `/api/v1/admin/login` are rewritten to `/api/index?path=…` and `api/index.ts` restores the real `/api/…` path before Express handles the request.
 
 ## Split setup: React on Vercel, API elsewhere
 
