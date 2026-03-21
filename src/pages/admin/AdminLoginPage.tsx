@@ -79,8 +79,8 @@ export default function AdminLoginPage() {
             <strong>API URL not configured for this build.</strong> On Vercel add environment variable{' '}
             <code style={styles.code}>VITE_API_BASE</code> = your backend origin (e.g.{' '}
             <code style={styles.code}>https://api.yourdomain.com</code>, no trailing slash), then{' '}
-            <strong>redeploy</strong>. Otherwise login POSTs hit this static site and return 405. See{' '}
-            <code style={styles.code}>VERCEL.md</code>.
+            <strong>redeploy</strong>. Otherwise login POSTs hit this static site and return 405. See root{' '}
+            <code style={styles.code}>README.md</code>.
           </div>
         ) : null}
 

@@ -4,7 +4,10 @@ export { API_BASE, isApiBaseConfigured };
 type Json = Record<string, any>;
 
 const vercelHint =
-  'Deploy misconfiguration: set VITE_API_BASE in Vercel → Environment Variables to your real API URL (no trailing slash), then redeploy. See VERCEL.md in the repo.';
+  'Deploy misconfiguration: set VITE_API_BASE in Vercel → Environment Variables to your real API URL (no trailing slash), then redeploy. See README.md in the repo.';
+
+const serverErrorHint =
+  'If this persists: Vercel → Deployment → Logs (Functions). Confirm DATABASE_URL, JWT_SECRET (≥20 chars), and run prisma migrate deploy on production DB.';
 
 async function request<T = Json>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
@@ -23,7 +26,11 @@ async function request<T = Json>(path: string, init?: RequestInit): Promise<T> {
           throw new Error(`${res.status} — ${vercelHint}`);
         }
       }
-      throw new Error(`${res.status} ${res.statusText}`);
+      const raw = `${res.status}${res.statusText ? ` ${res.statusText}` : ''}`.trim();
+      if (res.status >= 500) {
+        throw new Error(`${raw}. ${serverErrorHint}`);
+      }
+      throw new Error(raw);
     }
     throw new Error('Invalid JSON from API');
   }
@@ -33,9 +40,21 @@ async function request<T = Json>(path: string, init?: RequestInit): Promise<T> {
         throw new Error(`${res.status} — ${vercelHint}`);
       }
     }
-    const message =
-      (data && (data.error || data.message)) || `${res.status} ${res.statusText}`;
-    throw new Error(typeof message === 'string' ? message : `${res.status} ${res.statusText}`);
+    const fromBody =
+      data &&
+      (typeof data.message === 'string'
+        ? data.message
+        : typeof data.error === 'string'
+          ? data.error
+          : typeof data.hint === 'string'
+            ? `${data.error ?? 'Error'}: ${data.hint}`
+            : null);
+    const fallback = `${res.status}${res.statusText ? ` ${res.statusText}` : ''}`.trim();
+    let message = fromBody || fallback;
+    if (res.status >= 500 && !fromBody?.includes('DATABASE') && !fromBody?.includes('JWT')) {
+      message = `${message}${message && !message.endsWith('.') ? '.' : ''} ${serverErrorHint}`;
+    }
+    throw new Error(typeof message === 'string' ? message : fallback);
   }
   return data as T;
 }
