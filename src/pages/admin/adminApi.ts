@@ -41,7 +41,15 @@ async function request<T = Json>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export const adminApi = {
-  bootstrap: () => request('/api/v1/admin/bootstrap', { method: 'POST' }),
+  /** First admin only: send email/password from the login form, or leave empty to use ADMIN_EMAIL / ADMIN_PASSWORD on the server. */
+  bootstrap: (email?: string, password?: string) =>
+    request('/api/v1/admin/bootstrap', {
+      method: 'POST',
+      body: JSON.stringify({
+        ...(email?.trim() ? { email: email.trim() } : {}),
+        ...(password ? { password } : {}),
+      }),
+    }),
   login: (email: string, password: string) =>
     request('/api/v1/admin/login', { method: 'POST', body: JSON.stringify({ email, password }) }),
   logout: () => request('/api/v1/admin/logout', { method: 'POST' }),

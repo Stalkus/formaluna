@@ -11,7 +11,7 @@ Vercel runs the Express app from `api/index.ts` (see `vercel.json` rewrites). Th
 | Name | Required | Notes |
 | --- | --- | --- |
 | `DATABASE_URL` | Yes | Postgres for Prisma. Prefer your provider’s **pooled / serverless** connection string (e.g. Neon pooler). Include **`sslmode=require`** (or equivalent) if the host requires TLS. |
-| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | For bootstrap | Required only for **Create Admin (first run)** via `/api/v1/admin/bootstrap`. |
+| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Optional | Alternative to sending credentials in the **Create Admin** request body on first run (see admin login page). |
 | `JWT_SECRET` | Yes | Strong secret for tokens. |
 | `APP_ORIGIN` | Optional | Exact site origin (`https://your-domain.com`). If unset, CORS still allows `https://${VERCEL_URL}` on Vercel. |
 | `SESSION_COOKIE_SAMESITE` | Optional | Defaults suit same-site; use **`lax`** (or omit) for same deployment. |

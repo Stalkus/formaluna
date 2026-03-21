@@ -31,6 +31,7 @@ POST /api/v1/auth/refresh`}
         <div style={styles.sectionTitle}>Admin</div>
         <Code>
 {`POST /api/v1/admin/bootstrap
+  body (first admin only, if no ADMIN_* env): { "email": "...", "password": "..." }
 POST /api/v1/admin/login
 GET  /api/v1/admin/me
 POST /api/v1/admin/logout

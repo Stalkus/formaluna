@@ -29,8 +29,16 @@ export default function AdminLoginPage() {
     setIsBusy(true);
     setStatus('');
     try {
-      await adminApi.bootstrap();
-      setStatus('Admin created. You can log in now.');
+      if (!email.trim() || !password) {
+        setStatus('Enter the admin email and password (min. 8 characters) you want, then click Create Admin.');
+        return;
+      }
+      if (password.length < 8) {
+        setStatus('Password must be at least 8 characters.');
+        return;
+      }
+      await adminApi.bootstrap(email.trim(), password);
+      setStatus('Admin created. You can sign in with the same email and password.');
     } catch (e: any) {
       setStatus(e?.message ?? 'Bootstrap failed');
     } finally {
@@ -62,7 +70,8 @@ export default function AdminLoginPage() {
         </div>
 
         <p style={styles.subtitle}>
-          Sign in with the admin account from your API server. First run: create admin on the API, then sign in here.
+          Sign in with an account that has the <strong>ADMIN</strong> role (not the same as a trade/B2B signup). First
+          deployment: enter email and password below, then <strong>Create Admin (first run)</strong>, then Sign in.
         </p>
 
         {!isApiBaseConfigured ? (

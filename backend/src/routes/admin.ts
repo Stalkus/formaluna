@@ -35,8 +35,15 @@ adminRouter.post('/login', async (req, res) => {
     })
     .parse(req.body);
 
-  const admin = await prisma.user.findUnique({ where: { email: body.email.toLowerCase() } });
-  if (!admin || admin.role !== 'ADMIN') return res.status(401).json({ error: 'Invalid credentials' });
+  const user = await prisma.user.findUnique({ where: { email: body.email.toLowerCase() } });
+  if (!user) return res.status(401).json({ error: 'Invalid credentials' });
+  if (user.role !== 'ADMIN') {
+    return res.status(403).json({
+      error:
+        'This email is a trade (B2B) account, not an admin. Use the professionals portal to sign in, or create the first admin with “Create Admin (first run)”.',
+    });
+  }
+  const admin = user;
 
   const ok = await bcrypt.compare(body.password, admin.passwordHash);
   if (!ok) return res.status(401).json({ error: 'Invalid credentials' });
@@ -46,20 +53,35 @@ adminRouter.post('/login', async (req, res) => {
   res.json({ admin: { id: admin.id, email: admin.email } });
 });
 
-adminRouter.post('/bootstrap', async (_req, res) => {
-  // Creates initial admin if none exist (dev convenience)
+adminRouter.post('/bootstrap', async (req, res) => {
   const existing = await prisma.user.count({ where: { role: 'ADMIN' } });
   if (existing > 0) return res.status(409).json({ error: 'Admin already exists' });
-  if (!env.ADMIN_EMAIL || !env.ADMIN_PASSWORD)
-    return res.status(400).json({ error: 'Missing ADMIN_EMAIL/ADMIN_PASSWORD env vars' });
 
-  const passwordHash = await bcrypt.hash(env.ADMIN_PASSWORD, 12);
+  const parsed = z
+    .object({
+      email: z.string().email().optional(),
+      password: z.string().min(8).optional(),
+    })
+    .safeParse(req.body);
+
+  const email =
+    (parsed.success && parsed.data.email?.trim()) || env.ADMIN_EMAIL?.trim().toLowerCase();
+  const password = (parsed.success && parsed.data.password) || env.ADMIN_PASSWORD;
+
+  if (!email || !password) {
+    return res.status(400).json({
+      error:
+        'On first run, fill in email and password on the login page and click “Create Admin”, or set ADMIN_EMAIL and ADMIN_PASSWORD in the server environment.',
+    });
+  }
+
+  const passwordHash = await bcrypt.hash(password, 12);
   const admin = await prisma.user.create({
     data: {
       role: 'ADMIN',
       approvalStatus: 'APPROVED',
       approvedAt: new Date(),
-      email: env.ADMIN_EMAIL.toLowerCase(),
+      email: email.toLowerCase(),
       passwordHash,
       displayName: 'Admin',
     },
