@@ -40,15 +40,20 @@ async function request<T = Json>(path: string, init?: RequestInit): Promise<T> {
         throw new Error(`${res.status} — ${vercelHint}`);
       }
     }
+    const prismaLine =
+      data && typeof data.hint === 'string' && typeof data.code === 'string'
+        ? `${data.error ?? 'Error'} [${data.code}]: ${data.hint}`
+        : null;
     const fromBody =
-      data &&
-      (typeof data.message === 'string'
-        ? data.message
-        : typeof data.error === 'string'
-          ? data.error
-          : typeof data.hint === 'string'
-            ? `${data.error ?? 'Error'}: ${data.hint}`
-            : null);
+      prismaLine ||
+      (data &&
+        (typeof data.message === 'string'
+          ? data.message
+          : typeof data.error === 'string'
+            ? data.error
+            : typeof data.hint === 'string'
+              ? `${data.error ?? 'Error'}: ${data.hint}`
+              : null));
     const fallback = `${res.status}${res.statusText ? ` ${res.statusText}` : ''}`.trim();
     let message = fromBody || fallback;
     if (res.status >= 500 && !fromBody?.includes('DATABASE') && !fromBody?.includes('JWT')) {

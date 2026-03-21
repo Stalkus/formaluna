@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import { ZodError } from 'zod';
+import { Prisma } from '@prisma/client';
 
 import { prisma } from './prisma.js';
 import { env } from './lib/env.js';
@@ -51,13 +52,50 @@ app.use((_req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
 
+const PRISMA_KNOWN_HINTS: Record<string, string> = {
+  P1000:
+    'Database authentication failed — check username/password in DATABASE_URL.',
+  P1001:
+    'Cannot reach the database server — check DATABASE_URL host, firewall, and that the provider allows connections (use pooled URL if recommended).',
+  P1003: 'Database does not exist — create the database or fix the name in DATABASE_URL.',
+  P1011: 'TLS/SSL error — try adding ?sslmode=require (or your host’s required SSL params) to DATABASE_URL.',
+  P1017: 'Server closed the connection — often SSL or pooler settings; verify DATABASE_URL with your host’s docs.',
+  P2021:
+    'A database table is missing — run `npx prisma migrate deploy` using the same DATABASE_URL as production.',
+  P2022: 'A column is missing — migrations are behind; run `prisma migrate deploy` on production.',
+  P2002: 'Unique constraint — record already exists (e.g. admin email).',
+};
+
+function prismaClientHint(err: unknown): { code: string; hint: string } | null {
+  if (err instanceof Prisma.PrismaClientKnownRequestError) {
+    const hint = PRISMA_KNOWN_HINTS[err.code] ?? `See Prisma docs for code ${err.code}.`;
+    return { code: err.code, hint };
+  }
+  if (err instanceof Prisma.PrismaClientInitializationError) {
+    return {
+      code: err.errorCode ?? 'INIT',
+      hint:
+        'Database failed to connect — verify DATABASE_URL, SSL (?sslmode=require), and use your host’s pooled/serverless connection string if required.',
+    };
+  }
+  return null;
+}
+
 app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   if (err instanceof ZodError) {
     return res.status(400).json({ error: 'Invalid request', details: err.flatten() });
   }
+  const prismaHint = prismaClientHint(err);
   // eslint-disable-next-line no-console
   console.error(err);
   const message = err instanceof Error ? err.message : 'Internal server error';
+  if (prismaHint) {
+    return res.status(500).json({
+      error: 'Internal server error',
+      code: prismaHint.code,
+      hint: prismaHint.hint,
+    });
+  }
   res.status(500).json({
     error: 'Internal server error',
     ...(env.NODE_ENV !== 'production' ? { message } : {}),
