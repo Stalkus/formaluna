@@ -32,10 +32,12 @@ The dev server proxies `/api` to `http://localhost:8080` (`vite.config.ts`).
 
 Build command is `npm run vercel-build` (see root `package.json`). Set at least:
 
+**If `/api/health` shows “Serverless Function has crashed” or logs show `JWT_SECRET` / `too_small`:** your `JWT_SECRET` in Vercel is missing or **shorter than 20 characters**. Set it to a long random string (e.g. run `openssl rand -hex 32` locally), assign to **Production** (and Preview if needed), then **Redeploy**.
+
 | Variable | Required | Notes |
 | --- | --- | --- |
 | `DATABASE_URL` | Yes | Pooled Postgres URL; include TLS if required (`sslmode=require`). |
-| `JWT_SECRET` | Yes | Strong secret (≥ 20 characters). |
+| `JWT_SECRET` | Yes | **Minimum 20 characters** (enforced in code). Short values cause immediate crash. |
 | `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Optional | Bootstrap admin without sending credentials in the first request. |
 | `APP_ORIGIN` | Optional | e.g. `https://your-domain.com`. |
 | `VITE_API_BASE` | Optional | Only if the API is on another host (no trailing slash). |
