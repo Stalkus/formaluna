@@ -29,7 +29,6 @@ const ProductsPage: React.FC = () => {
   const [products, setProducts] = useState<PublicProductListItem[]>(STUDIO_MOCK_LIST);
   const [tabs, setTabs] = useState(FALLBACK_TABS);
   const [activeKey, setActiveKey] = useState('all');
-  const [loadNote, setLoadNote] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -43,15 +42,11 @@ const ProductsPage: React.FC = () => {
         if (prods.length > 0) {
           setProducts(prods);
           setTabs([{ key: 'all', label: 'All' }, ...cats.map((c) => ({ key: c.slug, label: c.name }))]);
-          setLoadNote(null);
-        } else {
-          setLoadNote('No published studio products in the API yet — showing demo catalogue.');
         }
       } catch {
         if (cancelled) return;
         setProducts(STUDIO_MOCK_LIST);
         setTabs(FALLBACK_TABS);
-        setLoadNote('API unavailable — showing demo catalogue. Start the backend and run migrations + seed.');
       }
     })();
     return () => {
