@@ -80,25 +80,19 @@ const ProductsPage: React.FC = () => {
           <p className="hero-subtitle">
             Our curated selection of premium luminaires, blending pure aesthetics with uncompromised engineering.
           </p>
-          {loadNote ? (
-            <p style={{ marginTop: 12, fontSize: '0.9rem', opacity: 0.75, maxWidth: 640 }}>{loadNote}</p>
-          ) : null}
-          <div className="products-filter">
-            {tabs.map((tab) => (
-              <button
-                key={tab.key}
-                className={`filter-btn ${activeKey === tab.key ? 'active' : ''}`}
-                onClick={() => setActiveKey(tab.key)}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          <div style={{ marginTop: '32px' }}>
-            <Link to="/projects/contact" className="btn-solid" style={{ display: 'inline-block' }}>
-              Download our catalogue here
-            </Link>
+          <div className="products-filter-row">
+            <span className="products-filter-label">Filter</span>
+            <div className="products-filter-group">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  className={`products-filter-btn ${activeKey === tab.key ? 'active' : ''}`}
+                  onClick={() => setActiveKey(tab.key)}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
         </motion.header>
 
