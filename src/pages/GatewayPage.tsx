@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 import './GatewayPage.css';
 
 export default function GatewayPage() {
   return (
     <div className="gateway-hero">
-      <Navbar />
+
+      {/* Logo only — no nav links on the gateway */}
+      <header className="gateway-header">
+        <Link to="/" className="gateway-logo-link" aria-label="Forma Luna">
+          <img src="/logo-dark.png" alt="Forma Luna" className="gateway-logo" />
+        </Link>
+      </header>
 
       <div className="gateway-split" role="presentation">
         <section

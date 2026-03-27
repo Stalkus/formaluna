@@ -1,17 +1,44 @@
+/* ─── Wrapper ─────────────────────────────────────────────────────── */
 .gateway-hero {
   min-height: 100vh;
   width: 100vw;
   position: relative;
   overflow: hidden;
   background-color: #0c0e0c;
+  display: flex;
+  flex-direction: column;
 }
 
+/* ─── Logo header ─────────────────────────────────────────────────── */
+.gateway-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  padding: 28px 5%;
+  display: flex;
+  align-items: center;
+}
+
+.gateway-logo-link {
+  display: inline-flex;
+}
+
+.gateway-logo {
+  height: 36px;
+  width: auto;
+  display: block;
+  /* Force white on the dark gateway background */
+  filter: brightness(0) invert(1);
+}
+
+/* ─── 50/50 split ─────────────────────────────────────────────────── */
 .gateway-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 100vh;
   width: 100%;
-  padding-top: 88px;
   box-sizing: border-box;
 }
 
@@ -19,12 +46,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 48px 8vw 80px;
-  color: var(--off-white);
+  justify-content: flex-start;
+  padding: 120px 8vw 80px;
+  color: var(--off-white, #fffff3);
+  box-sizing: border-box;
 }
 
-/* Shared hero image per half (split crop) */
+/* ─── Background image with per-side crop ─────────────────────────── */
 .gateway-panel-bg {
   position: absolute;
   inset: 0;
@@ -45,139 +73,143 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-      135deg,
-      rgba(12, 14, 12, 0.15) 0%,
-      rgba(12, 14, 12, 0.55) 45%,
-      rgba(20, 28, 22, 0.78) 100%
-    ),
-    radial-gradient(900px 600px at 20% 40%, rgba(255, 255, 255, 0.08), transparent 55%);
+  background:
+    linear-gradient(135deg,
+      rgba(12, 14, 12, 0.12) 0%,
+      rgba(12, 14, 12, 0.58) 50%,
+      rgba(20, 28, 22, 0.82) 100%),
+    radial-gradient(900px 600px at 20% 40%, rgba(255, 255, 255, 0.07), transparent 55%);
 }
 
 .gateway-panel--trade .gateway-panel-bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-      225deg,
+  background:
+    linear-gradient(225deg,
       rgba(8, 12, 10, 0.88) 0%,
       rgba(18, 32, 26, 0.72) 50%,
-      rgba(36, 50, 40, 0.5) 100%
-    ),
+      rgba(36, 50, 40, 0.52) 100%),
     radial-gradient(700px 500px at 80% 35%, rgba(75, 96, 76, 0.18), transparent 50%);
 }
 
+/* ─── Content ─────────────────────────────────────────────────────── */
 .gateway-panel-inner {
   position: relative;
   z-index: 2;
-  max-width: 420px;
+  max-width: 400px;
 }
 
 .gateway-panel-eyebrow {
   font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  font-size: 0.72rem;
-  opacity: 0.88;
+  font-size: 0.7rem;
+  opacity: 0.82;
   margin-bottom: 14px;
 }
 
 .gateway-panel-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.85rem, 3.2vw, 2.65rem);
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
   line-height: 1.15;
-  color: var(--off-white);
+  color: var(--off-white, #fffff3);
   font-weight: 400;
   margin: 0;
 }
 
 .gateway-panel-text {
   font-family: var(--font-sans);
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   line-height: 1.65;
   font-weight: 300;
-  opacity: 0.92;
-  margin-top: 16px;
+  opacity: 0.9;
+  margin-top: 14px;
 }
 
+/* ─── Buttons ─────────────────────────────────────────────────────── */
 .gateway-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-top: 26px;
+  margin-top: 28px;
 }
 
 .gateway-btn {
   font-family: var(--font-sans);
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.08);
-  color: var(--off-white);
-  padding: 12px 18px;
+  color: var(--off-white, #fffff3);
+  padding: 11px 20px;
   cursor: pointer;
   transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
 }
 
 .gateway-btn:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.28);
-  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .gateway-btn.primary {
-  border-color: rgba(255, 255, 255, 0.38);
+  border-color: rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.16);
 }
 
 .gateway-panel--trade .gateway-btn.primary {
-  border-color: rgba(232, 235, 228, 0.35);
-  background: rgba(75, 96, 76, 0.35);
+  border-color: rgba(232, 235, 228, 0.36);
+  background: rgba(75, 96, 76, 0.36);
 }
 
 .gateway-panel--trade .gateway-btn.primary:hover {
-  background: rgba(75, 96, 76, 0.5);
+  background: rgba(75, 96, 76, 0.52);
 }
 
-/* Center hairline between halves */
+/* ─── Divider between halves ──────────────────────────────────────── */
 .gateway-panel--studio {
-  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* ─── Footer kicker ───────────────────────────────────────────────── */
 .gateway-kicker {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 20px;
+  bottom: 18px;
   z-index: 10;
   font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: 0.72rem;
-  opacity: 0.75;
-  color: var(--off-white);
+  font-size: 0.68rem;
+  opacity: 0.65;
+  color: var(--off-white, #fffff3);
   text-align: center;
+  white-space: nowrap;
   max-width: 90vw;
   pointer-events: none;
 }
 
+/* ─── Tablet (≤ 900 px) ───────────────────────────────────────────── */
 @media (max-width: 900px) {
   .gateway-split {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
     min-height: auto;
-    padding-top: 76px;
   }
 
   .gateway-panel {
-    min-height: 52vh;
-    padding: 36px 8vw 48px;
+    min-height: 55vh;
+    padding: 96px 8vw 56px;
+    justify-content: flex-start;
   }
 
   .gateway-panel--studio {
@@ -193,23 +225,64 @@
     background-position: center 60%;
   }
 
+  .gateway-panel-title {
+    font-size: clamp(1.75rem, 5vw, 2.4rem);
+  }
+
   .gateway-kicker {
     position: relative;
     left: auto;
     transform: none;
     bottom: auto;
     padding: 20px 8vw 28px;
-    margin: 0;
+    white-space: normal;
+    text-align: center;
+    display: block;
   }
 }
 
+/* ─── Mobile (≤ 480 px) ───────────────────────────────────────────── */
 @media (max-width: 480px) {
+  .gateway-header {
+    padding: 22px 6vw;
+  }
+
+  .gateway-logo {
+    height: 28px;
+  }
+
+  .gateway-panel {
+    min-height: 50vh;
+    padding: 88px 6vw 48px;
+  }
+
+  .gateway-panel-inner {
+    max-width: 100%;
+  }
+
+  .gateway-panel-title {
+    font-size: 1.75rem;
+  }
+
+  .gateway-panel-text {
+    font-size: 0.92rem;
+  }
+
   .gateway-actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
 
   .gateway-btn {
     width: 100%;
+    padding: 13px 20px;
+    font-size: 0.84rem;
+    justify-content: center;
+  }
+
+  .gateway-kicker {
+    font-size: 0.62rem;
+    padding: 16px 6vw 22px;
   }
 }
