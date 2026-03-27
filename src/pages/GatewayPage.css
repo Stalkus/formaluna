@@ -56,16 +56,17 @@
 .gateway-panel-bg {
   position: absolute;
   inset: 0;
-  background-image: url('/gateway-hero.png');
   background-size: cover;
   z-index: 0;
 }
 
 .gateway-panel--studio .gateway-panel-bg {
-  background-position: 28% center;
+  background-image: url('/gateway-studio.png');
+  background-position: center center;
 }
 
 .gateway-panel--trade .gateway-panel-bg {
+  background-image: url('/gateway-hero.png');
   background-position: 72% center;
 }
 
