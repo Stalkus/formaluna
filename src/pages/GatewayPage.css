@@ -19,6 +19,7 @@
   padding: 28px 5%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .gateway-logo-link {
@@ -26,9 +27,10 @@
 }
 
 .gateway-logo {
-  height: 36px;
+  height: 96px;
   width: auto;
   display: block;
+  object-fit: contain;
   /* Force white on the dark gateway background */
   filter: brightness(0) invert(1);
 }
@@ -47,7 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 120px 8vw 80px;
+  padding: 148px 8vw 80px;
   color: var(--off-white, #fffff3);
   box-sizing: border-box;
 }
@@ -201,6 +203,10 @@
 
 /* ─── Tablet (≤ 900 px) ───────────────────────────────────────────── */
 @media (max-width: 900px) {
+  .gateway-logo {
+    height: 77px;
+  }
+
   .gateway-split {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
@@ -209,7 +215,7 @@
 
   .gateway-panel {
     min-height: 55vh;
-    padding: 96px 8vw 56px;
+    padding: 110px 8vw 56px;
     justify-content: flex-start;
   }
 
@@ -245,16 +251,16 @@
 /* ─── Mobile (≤ 480 px) ───────────────────────────────────────────── */
 @media (max-width: 480px) {
   .gateway-header {
-    padding: 22px 6vw;
+    padding: 18px 6vw;
   }
 
   .gateway-logo {
-    height: 28px;
+    height: 56px;
   }
 
   .gateway-panel {
     min-height: 50vh;
-    padding: 88px 6vw 48px;
+    padding: 96px 6vw 48px;
   }
 
   .gateway-panel-inner {
