@@ -62,7 +62,7 @@ const MoodboardsPage: React.FC = () => {
         variants={fadeInUp}
         style={{ paddingBottom: '80px' }}
       >
-        <h1 className="hero-title">Inspiration.</h1>
+        <h1 className="hero-title">Moodboards.</h1>
         <p className="hero-subtitle">Curated textures, material combinations, and light simulations exploring the boundary between form and atmosphere.</p>
       </motion.div>
 
