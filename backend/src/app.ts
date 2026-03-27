@@ -54,7 +54,7 @@ app.use((_req, res) => {
 
 const PRISMA_KNOWN_HINTS: Record<string, string> = {
   P1000:
-    'Database authentication failed — check username/password in DATABASE_URL.',
+    'Database authentication failed — username or password in DATABASE_URL does not match the database (reset the DB password in Supabase if unsure; URL-encode special characters, e.g. @ as %40).',
   P1001:
     'Cannot reach the database server — check DATABASE_URL host, firewall, and that the provider allows connections (use pooled URL if recommended).',
   P1003: 'Database does not exist — create the database or fix the name in DATABASE_URL.',
@@ -72,10 +72,38 @@ function prismaClientHint(err: unknown): { code: string; hint: string } | null {
     return { code: err.code, hint };
   }
   if (err instanceof Prisma.PrismaClientInitializationError) {
+    const msg = err.message ?? '';
+    // Prisma surfaces P1000-style auth failures as InitializationError with errorCode undefined.
+    const authFail =
+      /Authentication failed|credentials (?:for `postgres` )?are not valid|password authentication failed/i.test(
+        msg,
+      );
+    const unreachable = /Can't reach database server|ECONNREFUSED|ETIMEDOUT|ENOTFOUND/i.test(msg);
+
+    if (authFail) {
+      return {
+        code: 'P1000',
+        hint: `${PRISMA_KNOWN_HINTS.P1000} Copy the URI from Supabase → Connect → ORMs → Prisma (transaction pooler); do not mix a pooler host with the wrong project password.`,
+      };
+    }
+    if (unreachable) {
+      return {
+        code: 'P1001',
+        hint: `${PRISMA_KNOWN_HINTS.P1001} On Vercel, prefer the pooler connection string from Supabase (often avoids IPv6 / direct-host issues).`,
+      };
+    }
+
+    const base =
+      'Database failed to connect — verify DATABASE_URL, SSL (?sslmode=require), and for Supabase use the Transaction pooler URI (port 6543) with ?pgbouncer=true&connection_limit=1.';
+    const detail = err.message?.trim();
+    const redacted =
+      detail && detail.length < 500
+        ? detail.replace(/postgres(ql)?:\/\/[^\s'"]+/gi, 'postgresql://…')
+        : '';
+    const safeDetail = redacted ? ` Prisma: ${redacted}` : '';
     return {
       code: err.errorCode ?? 'INIT',
-      hint:
-        'Database failed to connect — verify DATABASE_URL, SSL (?sslmode=require), and use your host’s pooled/serverless connection string if required.',
+      hint: `${base}${safeDetail}`,
     };
   }
   return null;

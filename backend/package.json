@@ -11,11 +11,11 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "lint": "eslint .",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-    "db:migrate": "prisma migrate deploy",
+    "prisma:generate": "node scripts/prisma-with-env.mjs generate",
+    "prisma:migrate": "node scripts/prisma-with-env.mjs migrate dev",
+    "db:migrate": "node scripts/prisma-with-env.mjs migrate deploy",
     "db:seed": "prisma db seed",
-    "prisma:studio": "prisma studio"
+    "prisma:studio": "node scripts/prisma-with-env.mjs studio"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.888.0",

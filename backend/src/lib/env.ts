@@ -1,4 +1,8 @@
 import { z } from 'zod';
+import { resolveDatabaseUrl, resolveDirectUrl } from './resolveDatabaseUrl.js';
+
+resolveDatabaseUrl();
+resolveDirectUrl();
 
 const optionalUrl = z
   .string()
@@ -20,7 +24,8 @@ const EnvSchema = z.object({
   /** Use `none` when the browser loads the site from a different host than the API (e.g. Vercel frontend + separate API). Requires HTTPS. */
   SESSION_COOKIE_SAMESITE: z.enum(['lax', 'none', 'strict']).default('lax'),
   DATABASE_URL: z.string().min(1, {
-    message: 'DATABASE_URL is required (Postgres connection string). Set it in Vercel → Settings → Environment Variables.',
+    message:
+      'DATABASE_URL is required (Postgres). In Vercel, set DATABASE_URL or use the Supabase integration (POSTGRES_PRISMA_URL / POSTGRES_URL are accepted automatically).',
   }),
   JWT_SECRET: z.string().min(20, {
     message:
