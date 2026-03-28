@@ -7,6 +7,9 @@ backend/dist/
 
 # OS / editor
 .DS_Store
+.agent/
+.claude/
+.qoder/
 
 # Environment (never commit secrets)
 .env
