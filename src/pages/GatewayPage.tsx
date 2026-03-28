@@ -1,70 +1,68 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './GatewayPage.css';
 
 export default function GatewayPage() {
+  const [hoverSide, setHoverSide] = useState<'studio' | 'trade' | null>(null);
+
   return (
     <div className="gateway-hero">
 
-      {/* Logo only — no nav links on the gateway */}
       <header className="gateway-header">
-        <Link to="/" className="gateway-logo-link" aria-label="Forma Luna">
-          <img src="/logo-dark.png" alt="Forma Luna" className="gateway-logo" />
-        </Link>
+        <div className="gateway-header-inner">
+          <Link to="/" className="gateway-logo-link" aria-label="Forma Luna">
+            <img src="/logo-dark.png" alt="Forma Luna" className="gateway-logo" />
+          </Link>
+          <h1 className="gateway-tagline">
+            <span className="gateway-tagline-accent">Affordable luxury</span>
+            <span className="gateway-tagline-serif">Light that feels right.</span>
+          </h1>
+        </div>
       </header>
 
-      <div className="gateway-split" role="presentation">
+      <div className="gateway-split" role="presentation" onMouseLeave={() => setHoverSide(null)}>
         <section
-          className="gateway-panel gateway-panel--studio"
+          className={`gateway-panel gateway-panel--studio${hoverSide === 'studio' ? ' is-elevated' : ''}`}
           aria-labelledby="gateway-studio-heading"
+          onMouseEnter={() => setHoverSide('studio')}
         >
           <div className="gateway-panel-bg" aria-hidden />
           <div className="gateway-panel-inner">
-            <p className="gateway-panel-eyebrow">Studio &amp; portfolio</p>
-            <h1 id="gateway-studio-heading" className="gateway-panel-title">
-              Light for homes &amp; hospitality
-            </h1>
-            <p className="gateway-panel-text">
-              Explore projects, moodboards, and our residential and hospitality collections — curated for
-              architects and homeowners.
+            <h2 id="gateway-studio-heading" className="gateway-panel-eyebrow">
+              Studio &amp; portfolio
+            </h2>
+            <p className="gateway-panel-oneliner">
+              Residential and hospitality lighting — curated for architects and homes.
             </p>
             <div className="gateway-actions">
               <Link to="/projects/projects" className="gateway-btn primary">
-                Explore projects
-              </Link>
-              <Link to="/projects/about" className="gateway-btn">
-                About the studio
+                Go to studio
               </Link>
             </div>
           </div>
         </section>
 
         <section
-          className="gateway-panel gateway-panel--trade"
+          className={`gateway-panel gateway-panel--trade${hoverSide === 'trade' ? ' is-elevated' : ''}`}
           aria-labelledby="gateway-trade-heading"
+          onMouseEnter={() => setHoverSide('trade')}
         >
           <div className="gateway-panel-bg" aria-hidden />
           <div className="gateway-panel-inner">
-            <p className="gateway-panel-eyebrow">Trade portal</p>
-            <h1 id="gateway-trade-heading" className="gateway-panel-title">
-              Specs &amp; wholesale for professionals
-            </h1>
-            <p className="gateway-panel-text">
-              Technical sheets, trade pricing, and support for electrical contractors, integrators, and
-              project teams.
+            <h2 id="gateway-trade-heading" className="gateway-panel-eyebrow">
+              Trade portal
+            </h2>
+            <p className="gateway-panel-oneliner">
+              Specs, trade pricing, and support for contractors and integrators.
             </p>
             <div className="gateway-actions">
               <Link to="/professionals/about" className="gateway-btn primary">
-                Enter trade portal
-              </Link>
-              <Link to="/professionals/products" className="gateway-btn">
-                Trade catalog
+                Go to trade portal
               </Link>
             </div>
           </div>
         </section>
       </div>
-
-      <p className="gateway-kicker">Forma Luna — architectural lighting studio + trade portfolio</p>
     </div>
   );
 }

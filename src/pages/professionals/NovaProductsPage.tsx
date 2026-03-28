@@ -53,7 +53,7 @@ const NovaProductsPage: React.FC = () => {
         if (cancelled) return;
         setProducts(TRADE_MOCK_PUBLIC);
         setTabs(FALLBACK_TABS);
-        setLoadNote('API unavailable — showing demo portfolio. Start the backend and run migrations + seed.');
+        setLoadNote(null);
       }
     })();
     return () => {

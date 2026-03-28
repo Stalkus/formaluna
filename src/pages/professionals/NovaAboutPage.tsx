@@ -16,10 +16,12 @@ const NovaAboutPage: React.FC = () => {
           transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
         >
           <h1 className="trade-statement">
-            Engineered for professionals. Driven by two decades of expertise.
+            Engineered for professionals. Driven by three decades of experience.
           </h1>
           <p className="trade-substatement">
-            Forma Luna's trade division is founded by Fernand to serve the rigorous demands of electrical contractors. Backed by 20+ years of direct relationships with major lighting brands.
+            Forma Luna&apos;s trade division is founded by Fernand to serve the rigorous demands of electrical contractors.
+            It&apos;s 3 decades of experience in wholesale and specification — with direct, long-standing relationships
+            across major lighting brands.
           </p>
         </motion.div>
 
@@ -32,8 +34,8 @@ const NovaAboutPage: React.FC = () => {
         >
           <div className="spec-block">
             <span className="spec-number">01</span>
-            <h3 className="spec-title">20 Years of Relationships</h3>
-            <p className="spec-desc">Fernand's two decades of navigating wholesale and direct B2B supply chains ensures the trade team secures Tier-1 components. We source only premium chipsets and pair them with heavily engineered, ripple-free DALI-2 drivers for absolute lighting control.</p>
+            <h3 className="spec-title">3 decades of experience.</h3>
+            <p className="spec-desc">Fernand's three decades of navigating wholesale and direct B2B supply chains ensures the trade team secures Tier-1 components. We source only premium chipsets and pair them with heavily engineered, ripple-free DALI-2 drivers for absolute lighting control.</p>
           </div>
           <div className="spec-block">
             <span className="spec-number">02</span>

@@ -11,6 +11,10 @@ export default defineConfig({
     ),
   },
   server: {
+    // Bind all interfaces so http://127.0.0.1:5173 and http://localhost:5173 both work
+    host: true,
+    port: 5173,
+    strictPort: false,
     proxy: {
       '/api': {
         target: 'http://localhost:8080',

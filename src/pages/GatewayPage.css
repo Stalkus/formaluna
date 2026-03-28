@@ -16,14 +16,52 @@
   left: 0;
   right: 0;
   z-index: 20;
-  padding: 28px 5%;
+  padding: 22px 5% 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
+}
+
+.gateway-header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+  max-width: min(420px, 92vw);
+  text-align: center;
 }
 
 .gateway-logo-link {
   display: inline-flex;
+}
+
+/* Tagline under logo: “Affordable luxury / Light that feels right.” */
+.gateway-tagline {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.gateway-tagline-accent {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 6px;
+}
+
+.gateway-tagline-serif {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--off-white, #fffff3);
+  text-transform: none;
 }
 
 .gateway-logo {
@@ -35,7 +73,7 @@
   filter: brightness(0) invert(1);
 }
 
-/* ─── 50/50 split ─────────────────────────────────────────────────── */
+/* ─── 50/50 split (fixed columns — no resize on hover) ───────────── */
 .gateway-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -52,6 +90,46 @@
   padding: 148px 8vw 80px;
   color: var(--off-white, #fffff3);
   box-sizing: border-box;
+  z-index: 1;
+  isolation: isolate;
+  transform: scale(1);
+  transform-origin: center center;
+  transition:
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hovered side only: slightly larger + drawn in front — layout (50/50) does not move */
+.gateway-panel.is-elevated {
+  z-index: 6;
+  transform: scale(1.018);
+  box-shadow:
+    0 32px 90px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.gateway-panel--studio.is-elevated {
+  box-shadow:
+    20px 0 72px rgba(0, 0, 0, 0.45),
+    0 32px 90px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.gateway-panel--trade.is-elevated {
+  box-shadow:
+    -20px 0 72px rgba(0, 0, 0, 0.45),
+    0 32px 90px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gateway-panel {
+    transition: box-shadow 0.25s ease;
+  }
+
+  .gateway-panel.is-elevated {
+    transform: none;
+  }
 }
 
 /* ─── Background image with per-side crop ─────────────────────────── */
@@ -109,25 +187,19 @@
   letter-spacing: 0.18em;
   font-size: 0.7rem;
   opacity: 0.82;
-  margin-bottom: 14px;
+  margin: 0 0 12px;
+  font-weight: 500;
 }
 
-.gateway-panel-title {
+.gateway-panel-oneliner {
   font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
-  line-height: 1.15;
+  font-size: clamp(1.05rem, 1.9vw, 1.28rem);
+  line-height: 1.35;
   color: var(--off-white, #fffff3);
   font-weight: 400;
   margin: 0;
-}
-
-.gateway-panel-text {
-  font-family: var(--font-sans);
-  font-size: 0.96rem;
-  line-height: 1.65;
-  font-weight: 300;
-  opacity: 0.9;
-  margin-top: 14px;
+  opacity: 0.95;
+  max-width: 22rem;
 }
 
 /* ─── Buttons ─────────────────────────────────────────────────────── */
@@ -135,7 +207,7 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 28px;
+  margin-top: 22px;
 }
 
 .gateway-btn {
@@ -182,25 +254,6 @@
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ─── Footer kicker ───────────────────────────────────────────────── */
-.gateway-kicker {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 18px;
-  z-index: 10;
-  font-family: var(--font-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.68rem;
-  opacity: 0.65;
-  color: var(--off-white, #fffff3);
-  text-align: center;
-  white-space: nowrap;
-  max-width: 90vw;
-  pointer-events: none;
-}
-
 /* ─── Tablet (≤ 900 px) ───────────────────────────────────────────── */
 @media (max-width: 900px) {
   .gateway-logo {
@@ -217,6 +270,13 @@
     min-height: 55vh;
     padding: 110px 8vw 56px;
     justify-content: flex-start;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .gateway-panel.is-elevated {
+    z-index: 1;
+    transform: none !important;
   }
 
   .gateway-panel--studio {
@@ -232,19 +292,9 @@
     background-position: center 60%;
   }
 
-  .gateway-panel-title {
-    font-size: clamp(1.75rem, 5vw, 2.4rem);
-  }
-
-  .gateway-kicker {
-    position: relative;
-    left: auto;
-    transform: none;
-    bottom: auto;
-    padding: 20px 8vw 28px;
-    white-space: normal;
-    text-align: center;
-    display: block;
+  .gateway-panel-oneliner {
+    font-size: clamp(1.05rem, 3.2vw, 1.22rem);
+    max-width: 100%;
   }
 }
 
@@ -267,18 +317,8 @@
     max-width: 100%;
   }
 
-  .gateway-panel-title {
-    font-size: 1.75rem;
-  }
-
-  .gateway-panel-text {
-    font-size: 0.92rem;
-  }
-
-  .gateway-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+  .gateway-panel-oneliner {
+    font-size: 1.05rem;
   }
 
   .gateway-btn {
@@ -286,10 +326,5 @@
     padding: 13px 20px;
     font-size: 0.84rem;
     justify-content: center;
-  }
-
-  .gateway-kicker {
-    font-size: 0.62rem;
-    padding: 16px 6vw 22px;
   }
 }
