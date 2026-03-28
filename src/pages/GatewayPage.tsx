@@ -9,14 +9,11 @@ export default function GatewayPage() {
     <div className="gateway-hero">
 
       <header className="gateway-header">
+        <h1 className="gateway-sr-only">Forma Luna — affordable luxury, light that feels right.</h1>
         <div className="gateway-header-inner">
           <Link to="/" className="gateway-logo-link" aria-label="Forma Luna">
-            <img src="/logo-dark.png" alt="Forma Luna" className="gateway-logo" />
+            <img src="/logo-dark.png" alt="" className="gateway-logo" />
           </Link>
-          <h1 className="gateway-tagline">
-            <span className="gateway-tagline-accent">Affordable luxury</span>
-            <span className="gateway-tagline-serif">Light that feels right.</span>
-          </h1>
         </div>
       </header>
 
@@ -63,6 +60,13 @@ export default function GatewayPage() {
           </div>
         </section>
       </div>
+
+      <footer className="gateway-footer">
+        <p className="gateway-footer-tagline">
+          <span className="gateway-tagline-accent">Affordable luxury</span>
+          <span className="gateway-tagline-serif">Light that feels right.</span>
+        </p>
+      </footer>
     </div>
   );
 }

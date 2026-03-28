@@ -23,25 +23,28 @@
   pointer-events: none;
 }
 
+.gateway-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .gateway-header-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
   pointer-events: auto;
-  max-width: min(420px, 92vw);
   text-align: center;
 }
 
 .gateway-logo-link {
   display: inline-flex;
-}
-
-/* Tagline under logo: “Affordable luxury / Light that feels right.” */
-.gateway-tagline {
-  margin: 0;
-  font-weight: 400;
-  line-height: 1.35;
 }
 
 .gateway-tagline-accent {
@@ -254,6 +257,29 @@
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* ─── Footer tagline ──────────────────────────────────────────────── */
+.gateway-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 12;
+  padding: 16px 8vw 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(12, 14, 12, 0.85) 0%, rgba(12, 14, 12, 0) 100%);
+}
+
+.gateway-footer-tagline {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+  max-width: min(420px, 92vw);
+}
+
 /* ─── Tablet (≤ 900 px) ───────────────────────────────────────────── */
 @media (max-width: 900px) {
   .gateway-logo {
@@ -296,6 +322,12 @@
     font-size: clamp(1.05rem, 3.2vw, 1.22rem);
     max-width: 100%;
   }
+
+  .gateway-footer {
+    position: relative;
+    padding: 20px 8vw 28px;
+    background: transparent;
+  }
 }
 
 /* ─── Mobile (≤ 480 px) ───────────────────────────────────────────── */
@@ -326,5 +358,13 @@
     padding: 13px 20px;
     font-size: 0.84rem;
     justify-content: center;
+  }
+
+  .gateway-footer {
+    padding: 16px 6vw 22px;
+  }
+
+  .gateway-tagline-serif {
+    font-size: 0.95rem;
   }
 }
