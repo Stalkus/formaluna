@@ -54,17 +54,6 @@
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.92);
-  margin-bottom: 6px;
-}
-
-.gateway-tagline-serif {
-  display: block;
-  font-family: var(--font-serif);
-  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--off-white, #fffff3);
-  text-transform: none;
 }
 
 .gateway-logo {
@@ -214,12 +203,13 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--off-white, #fffff3);
   padding: 11px 20px;
   cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -228,15 +218,32 @@
   white-space: nowrap;
 }
 
-.gateway-btn:hover {
-  transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.55);
-  background: rgba(255, 255, 255, 0.18);
+/* Studio (B2C): cream/beige like consumer pages — body bg + deep green type */
+.gateway-btn--studio {
+  background: var(--off-white, #fffff3);
+  color: var(--deep-green, #4b604c);
+  border: 1px solid rgba(75, 96, 76, 0.35);
 }
 
-.gateway-btn.primary {
-  border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.2);
+.gateway-btn--studio:hover {
+  transform: translateY(-1px);
+  background: #f2f0e4;
+  border-color: var(--deep-green, #4b604c);
+  color: var(--deep-green, #4b604c);
+}
+
+/* Trade portal: solid brand green like nav “Enter Trade Portal” */
+.gateway-btn--trade {
+  background: var(--deep-green, #4b604c);
+  color: var(--off-white, #fffff3);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.gateway-btn--trade:hover {
+  transform: translateY(-1px);
+  background: #3d4f3e;
+  border-color: rgba(0, 0, 0, 0.18);
+  color: var(--off-white, #fffff3);
 }
 
 /* ─── Divider between halves ──────────────────────────────────────── */
@@ -269,11 +276,8 @@
 }
 
 .gateway-footer .gateway-tagline-accent {
+  margin-bottom: 0;
   color: rgba(255, 255, 255, 0.95);
-}
-
-.gateway-footer .gateway-tagline-serif {
-  color: var(--off-white, #fffff3);
 }
 
 /* ─── Tablet (≤ 900 px) ───────────────────────────────────────────── */
@@ -350,9 +354,5 @@
 
   .gateway-footer {
     padding: 16px 6vw 22px;
-  }
-
-  .gateway-tagline-serif {
-    font-size: 0.95rem;
   }
 }

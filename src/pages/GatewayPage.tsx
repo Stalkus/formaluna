@@ -9,7 +9,7 @@ export default function GatewayPage() {
     <div className="gateway-hero">
 
       <header className="gateway-header">
-        <h1 className="gateway-sr-only">Forma Luna — affordable luxury, light that feels right.</h1>
+        <h1 className="gateway-sr-only">Forma Luna — affordable luxury.</h1>
         <div className="gateway-header-inner">
           <Link to="/" className="gateway-logo-link" aria-label="Forma Luna">
             <img src="/logo-dark.png" alt="" className="gateway-logo" />
@@ -32,7 +32,7 @@ export default function GatewayPage() {
               Residential and hospitality lighting — curated for architects and homes.
             </p>
             <div className="gateway-actions">
-              <Link to="/projects/projects" className="gateway-btn primary">
+              <Link to="/projects/projects" className="gateway-btn gateway-btn--studio">
                 Go to studio
               </Link>
             </div>
@@ -53,7 +53,7 @@ export default function GatewayPage() {
               Specs, trade pricing, and support for contractors and integrators.
             </p>
             <div className="gateway-actions">
-              <Link to="/professionals/about" className="gateway-btn primary">
+              <Link to="/professionals/about" className="gateway-btn gateway-btn--trade">
                 Go to trade portal
               </Link>
             </div>
@@ -64,7 +64,6 @@ export default function GatewayPage() {
       <footer className="gateway-footer">
         <p className="gateway-footer-tagline">
           <span className="gateway-tagline-accent">Affordable luxury</span>
-          <span className="gateway-tagline-serif">Light that feels right.</span>
         </p>
       </footer>
     </div>
