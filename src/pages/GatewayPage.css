@@ -9,7 +9,7 @@
   flex-direction: column;
 }
 
-/* ─── Logo header ─────────────────────────────────────────────────── */
+/* ─── Logo header (white logo on dark imagery) ─────────────────────── */
 .gateway-header {
   position: absolute;
   top: 0;
@@ -53,7 +53,7 @@
   font-size: 0.62rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.92);
   margin-bottom: 6px;
 }
 
@@ -72,11 +72,10 @@
   width: auto;
   display: block;
   object-fit: contain;
-  /* Force white on the dark gateway background */
   filter: brightness(0) invert(1);
 }
 
-/* ─── 50/50 split (fixed columns — no resize on hover) ───────────── */
+/* ─── 50/50 split ─────────────────────────────────────────────────── */
 .gateway-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -102,27 +101,26 @@
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Hovered side only: slightly larger + drawn in front — layout (50/50) does not move */
 .gateway-panel.is-elevated {
   z-index: 6;
   transform: scale(1.018);
   box-shadow:
-    0 32px 90px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.14);
+    0 28px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .gateway-panel--studio.is-elevated {
   box-shadow:
-    20px 0 72px rgba(0, 0, 0, 0.45),
-    0 32px 90px rgba(0, 0, 0, 0.32),
-    0 0 0 1px rgba(255, 255, 255, 0.16);
+    18px 0 60px rgba(0, 0, 0, 0.4),
+    0 28px 80px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.22);
 }
 
 .gateway-panel--trade.is-elevated {
   box-shadow:
-    -20px 0 72px rgba(0, 0, 0, 0.45),
-    0 32px 90px rgba(0, 0, 0, 0.32),
-    0 0 0 1px rgba(255, 255, 255, 0.16);
+    -18px 0 60px rgba(0, 0, 0, 0.4),
+    0 28px 80px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.22);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -135,49 +133,45 @@
   }
 }
 
-/* ─── Background image with per-side crop ─────────────────────────── */
+/* ─── Full-bleed images (B2C studio / B2B trade) + readable overlay ─── */
 .gateway-panel-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
+  background-position: center center;
   z-index: 0;
 }
 
 .gateway-panel--studio .gateway-panel-bg {
-  background-image: url('/gateway-studio.png');
-  background-position: center center;
+  background-image: url('/gateway-b2c.png');
 }
 
 .gateway-panel--trade .gateway-panel-bg {
-  background-image: url('/gateway-hero.png');
-  background-position: 72% center;
+  background-image: url('/gateway-b2b.png');
 }
 
-.gateway-panel--studio .gateway-panel-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(135deg,
-      rgba(12, 14, 12, 0.12) 0%,
-      rgba(12, 14, 12, 0.58) 50%,
-      rgba(20, 28, 22, 0.82) 100%),
-    radial-gradient(900px 600px at 20% 40%, rgba(255, 255, 255, 0.07), transparent 55%);
-}
-
+.gateway-panel--studio .gateway-panel-bg::after,
 .gateway-panel--trade .gateway-panel-bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(225deg,
-      rgba(8, 12, 10, 0.88) 0%,
-      rgba(18, 32, 26, 0.72) 50%,
-      rgba(36, 50, 40, 0.52) 100%),
-    radial-gradient(700px 500px at 80% 35%, rgba(75, 96, 76, 0.18), transparent 50%);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.42) 0%,
+    rgba(12, 14, 12, 0.55) 45%,
+    rgba(12, 14, 12, 0.72) 100%
+  );
 }
 
-/* ─── Content ─────────────────────────────────────────────────────── */
+.gateway-panel--trade .gateway-panel-bg::after {
+  background: linear-gradient(
+    225deg,
+    rgba(0, 0, 0, 0.48) 0%,
+    rgba(12, 14, 12, 0.58) 50%,
+    rgba(12, 14, 12, 0.75) 100%
+  );
+}
+
 .gateway-panel-inner {
   position: relative;
   z-index: 2;
@@ -189,23 +183,25 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.7rem;
-  opacity: 0.82;
+  opacity: 0.9;
   margin: 0 0 12px;
   font-weight: 500;
+  color: currentColor;
 }
 
 .gateway-panel-oneliner {
   font-family: var(--font-serif);
   font-size: clamp(1.05rem, 1.9vw, 1.28rem);
   line-height: 1.35;
-  color: var(--off-white, #fffff3);
+  color: currentColor;
   font-weight: 400;
   margin: 0;
-  opacity: 0.95;
+  opacity: 0.96;
   max-width: 22rem;
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.42);
 }
 
-/* ─── Buttons ─────────────────────────────────────────────────────── */
+/* ─── Buttons (white on dark panels) ──────────────────────────────── */
 .gateway-actions {
   display: flex;
   gap: 10px;
@@ -218,8 +214,8 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--off-white, #fffff3);
   padding: 11px 20px;
   cursor: pointer;
@@ -234,30 +230,21 @@
 
 .gateway-btn:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.32);
-  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .gateway-btn.primary {
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.gateway-panel--trade .gateway-btn.primary {
-  border-color: rgba(232, 235, 228, 0.36);
-  background: rgba(75, 96, 76, 0.36);
-}
-
-.gateway-panel--trade .gateway-btn.primary:hover {
-  background: rgba(75, 96, 76, 0.52);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* ─── Divider between halves ──────────────────────────────────────── */
 .gateway-panel--studio {
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* ─── Footer tagline ──────────────────────────────────────────────── */
+/* ─── Footer tagline (white) ─────────────────────────────────────── */
 .gateway-footer {
   position: absolute;
   left: 0;
@@ -269,7 +256,7 @@
   justify-content: center;
   align-items: center;
   pointer-events: none;
-  background: linear-gradient(to top, rgba(12, 14, 12, 0.85) 0%, rgba(12, 14, 12, 0) 100%);
+  background: linear-gradient(to top, rgba(12, 14, 12, 0.88) 0%, rgba(12, 14, 12, 0) 100%);
 }
 
 .gateway-footer-tagline {
@@ -278,6 +265,15 @@
   line-height: 1.35;
   text-align: center;
   max-width: min(420px, 92vw);
+  color: var(--off-white, #fffff3);
+}
+
+.gateway-footer .gateway-tagline-accent {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.gateway-footer .gateway-tagline-serif {
+  color: var(--off-white, #fffff3);
 }
 
 /* ─── Tablet (≤ 900 px) ───────────────────────────────────────────── */
@@ -307,15 +303,7 @@
 
   .gateway-panel--studio {
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .gateway-panel--studio .gateway-panel-bg {
-    background-position: center 35%;
-  }
-
-  .gateway-panel--trade .gateway-panel-bg {
-    background-position: center 60%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .gateway-panel-oneliner {
