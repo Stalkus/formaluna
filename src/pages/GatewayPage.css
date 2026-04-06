@@ -1,15 +1,26 @@
-/* ─── Wrapper ─────────────────────────────────────────────────────── */
+/* Studio = consumer “skin” (warm cream, same as site body / light nav). Trade = portal dark field (#1e2b23, same as body.portal-trade). */
 .gateway-hero {
+  --gateway-studio-skin: var(--off-white, #fffff3);
+  --gateway-trade-skin: #1e2b23;
+  --gateway-trade-text: #e8ebe4;
+
   min-height: 100vh;
   width: 100vw;
   position: relative;
   overflow: hidden;
-  background-color: #0c0e0c;
+  /* Split fallback behind panels (photos + overlays sit on top in each half) */
+  background: linear-gradient(
+    90deg,
+    var(--gateway-studio-skin) 0%,
+    var(--gateway-studio-skin) 50%,
+    var(--gateway-trade-skin) 50%,
+    var(--gateway-trade-skin) 100%
+  );
   display: flex;
   flex-direction: column;
 }
 
-/* ─── Logo header (white logo on dark imagery) ─────────────────────── */
+/* ─── Logo header — pill so dark logo reads over both halves ──────── */
 .gateway-header {
   position: absolute;
   top: 0;
@@ -41,27 +52,23 @@
   align-items: center;
   pointer-events: auto;
   text-align: center;
+  background: rgba(255, 255, 255, 0.97);
+  padding: 12px 32px 14px;
+  border-radius: 999px;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(75, 96, 76, 0.08);
 }
 
 .gateway-logo-link {
   display: inline-flex;
 }
 
-.gateway-tagline-accent {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.92);
-}
-
 .gateway-logo {
-  height: 96px;
+  height: 72px;
   width: auto;
   display: block;
   object-fit: contain;
-  filter: brightness(0) invert(1);
 }
 
 /* ─── 50/50 split ─────────────────────────────────────────────────── */
@@ -78,8 +85,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 148px 8vw 80px;
-  color: var(--off-white, #fffff3);
+  padding: 148px 8vw 120px;
   box-sizing: border-box;
   z-index: 1;
   isolation: isolate;
@@ -90,45 +96,26 @@
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.gateway-panel.is-elevated {
-  z-index: 6;
-  transform: scale(1.018);
-  box-shadow:
-    0 28px 80px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(255, 255, 255, 0.2);
+.gateway-panel--studio {
+  background-color: var(--gateway-studio-skin);
+  color: var(--deep-green, #4b604c);
+  border-right: 1px solid rgba(75, 96, 76, 0.14);
 }
 
-.gateway-panel--studio.is-elevated {
-  box-shadow:
-    18px 0 60px rgba(0, 0, 0, 0.4),
-    0 28px 80px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.22);
+.gateway-panel--trade {
+  background-color: var(--gateway-trade-skin);
+  color: var(--gateway-trade-text);
 }
 
-.gateway-panel--trade.is-elevated {
-  box-shadow:
-    -18px 0 60px rgba(0, 0, 0, 0.4),
-    0 28px 80px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.22);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gateway-panel {
-    transition: box-shadow 0.25s ease;
-  }
-
-  .gateway-panel.is-elevated {
-    transform: none;
-  }
-}
-
-/* ─── Full-bleed images (B2C studio / B2B trade) + readable overlay ─── */
+/* Photos + brand “skin” gradients (image shows through where overlay is softer) */
 .gateway-panel-bg {
   position: absolute;
   inset: 0;
+  z-index: 0;
+  pointer-events: none;
   background-size: cover;
   background-position: center center;
-  z-index: 0;
+  background-repeat: no-repeat;
 }
 
 .gateway-panel--studio .gateway-panel-bg {
@@ -139,26 +126,57 @@
   background-image: url('/gateway-b2b.png');
 }
 
-.gateway-panel--studio .gateway-panel-bg::after,
-.gateway-panel--trade .gateway-panel-bg::after {
+.gateway-panel--studio .gateway-panel-bg::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.42) 0%,
-    rgba(12, 14, 12, 0.55) 45%,
-    rgba(12, 14, 12, 0.72) 100%
+    rgba(255, 255, 243, 0.94) 0%,
+    rgba(255, 255, 243, 0.48) 38%,
+    rgba(245, 242, 232, 0.9) 100%
   );
 }
 
 .gateway-panel--trade .gateway-panel-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
     225deg,
-    rgba(0, 0, 0, 0.48) 0%,
-    rgba(12, 14, 12, 0.58) 50%,
-    rgba(12, 14, 12, 0.75) 100%
+    rgba(30, 43, 35, 0.93) 0%,
+    rgba(30, 43, 35, 0.62) 45%,
+    rgba(18, 28, 22, 0.94) 100%
   );
+}
+
+.gateway-panel.is-elevated {
+  z-index: 6;
+  transform: scale(1.018);
+}
+
+.gateway-panel--studio.is-elevated {
+  box-shadow:
+    18px 0 48px rgba(0, 0, 0, 0.1),
+    0 24px 56px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(75, 96, 76, 0.12);
+}
+
+.gateway-panel--trade.is-elevated {
+  box-shadow:
+    -18px 0 48px rgba(0, 0, 0, 0.35),
+    0 24px 56px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gateway-panel {
+    transition: box-shadow 0.25s ease;
+  }
+
+  .gateway-panel.is-elevated {
+    transform: none;
+  }
 }
 
 .gateway-panel-inner {
@@ -172,10 +190,14 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.7rem;
-  opacity: 0.9;
+  opacity: 0.88;
   margin: 0 0 12px;
   font-weight: 500;
   color: currentColor;
+}
+
+.gateway-panel--trade .gateway-panel-eyebrow {
+  opacity: 0.9;
 }
 
 .gateway-panel-oneliner {
@@ -185,12 +207,19 @@
   color: currentColor;
   font-weight: 400;
   margin: 0;
-  opacity: 0.96;
   max-width: 22rem;
-  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.42);
 }
 
-/* ─── Buttons (white on dark panels) ──────────────────────────────── */
+.gateway-panel--studio .gateway-panel-oneliner {
+  text-shadow: 0 1px 14px rgba(255, 255, 255, 0.55);
+}
+
+.gateway-panel--trade .gateway-panel-oneliner {
+  opacity: 0.95;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────── */
 .gateway-actions {
   display: flex;
   gap: 10px;
@@ -218,7 +247,7 @@
   white-space: nowrap;
 }
 
-/* Studio (B2C): cream/beige like consumer pages — body bg + deep green type */
+/* Studio CTA: cream fill + brand green type (matches light-site buttons) */
 .gateway-btn--studio {
   background: var(--off-white, #fffff3);
   color: var(--deep-green, #4b604c);
@@ -232,7 +261,7 @@
   color: var(--deep-green, #4b604c);
 }
 
-/* Trade portal: solid brand green like nav “Enter Trade Portal” */
+/* Trade CTA: brand green + cream text (matches “Enter Trade Portal” on studio nav) */
 .gateway-btn--trade {
   background: var(--deep-green, #4b604c);
   color: var(--off-white, #fffff3);
@@ -246,12 +275,7 @@
   color: var(--off-white, #fffff3);
 }
 
-/* ─── Divider between halves ──────────────────────────────────────── */
-.gateway-panel--studio {
-  border-right: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-/* ─── Footer tagline (white) ─────────────────────────────────────── */
+/* ─── Footer — light strip so tagline reads across both skins ─────── */
 .gateway-footer {
   position: absolute;
   left: 0;
@@ -263,7 +287,10 @@
   justify-content: center;
   align-items: center;
   pointer-events: none;
-  background: linear-gradient(to top, rgba(12, 14, 12, 0.88) 0%, rgba(12, 14, 12, 0) 100%);
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid rgba(75, 96, 76, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .gateway-footer-tagline {
@@ -272,18 +299,22 @@
   line-height: 1.35;
   text-align: center;
   max-width: min(420px, 92vw);
-  color: var(--off-white, #fffff3);
 }
 
 .gateway-footer .gateway-tagline-accent {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
   margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--deep-green, #4b604c);
 }
 
 /* ─── Tablet (≤ 900 px) ───────────────────────────────────────────── */
 @media (max-width: 900px) {
   .gateway-logo {
-    height: 77px;
+    height: 60px;
   }
 
   .gateway-split {
@@ -294,7 +325,7 @@
 
   .gateway-panel {
     min-height: 55vh;
-    padding: 110px 8vw 56px;
+    padding: 120px 8vw 56px;
     justify-content: flex-start;
     transform: none !important;
     box-shadow: none !important;
@@ -307,7 +338,7 @@
 
   .gateway-panel--studio {
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(75, 96, 76, 0.16);
   }
 
   .gateway-panel-oneliner {
@@ -318,7 +349,6 @@
   .gateway-footer {
     position: relative;
     padding: 20px 8vw 28px;
-    background: transparent;
   }
 }
 
@@ -328,13 +358,17 @@
     padding: 18px 6vw;
   }
 
+  .gateway-header-inner {
+    padding: 10px 22px 12px;
+  }
+
   .gateway-logo {
-    height: 56px;
+    height: 52px;
   }
 
   .gateway-panel {
     min-height: 50vh;
-    padding: 96px 6vw 48px;
+    padding: 108px 6vw 48px;
   }
 
   .gateway-panel-inner {
